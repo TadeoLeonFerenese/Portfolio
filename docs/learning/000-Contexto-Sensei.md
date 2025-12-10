@@ -24,3 +24,15 @@ Estamos construyendo mi **PORTFOLIO PERSONAL**.
 ## ARQUITECTURA ACTUAL
 - **Backend (`/api`)**: Laravel 11. Endpoints en `/api/v1`. Auth (opcional) con Sanctum.
 - **Frontend (`/client`)**: Vite + React. Alias (`@features`, `@components`). Axios para data fetching.
+
+## ESTÁNDARES DE CÓDIGO (NAMING CONVENTIONS)
+- **General**: Código en Inglés, Comentarios/Docs en Español.
+- **Frontend (React)**:
+    - Componentes: `PascalCase` (ej: `ProjectCard.jsx`).
+    - Funciones/Hooks: `camelCase` (ej: `useProjects`, `submitForm`).
+    - CSS Modules: Clases estándar (ej: `.cardTitle`), importadas como `styles.cardTitle`.
+- **Backend (Laravel)**:
+    - Clases/Controllers: `PascalCase` (ej: `ProjectController`).
+    - Métodos: `camelCase` (ej: `storeContact`).
+    - Base de Datos: `snake_case` (ej: `is_featured`, `image_url`).
+    - API JSON Response: `snake_case` para mantener consistencia con la DB.
