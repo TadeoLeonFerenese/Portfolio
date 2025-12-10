@@ -1,0 +1,35 @@
+.button {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.primary {
+  background-color: var(--accent-red);
+  color: var(--text-primary);
+  box-shadow: 0 4px 14px 0 rgba(187, 10, 30, 0.39);
+}
+
+.primary:hover {
+  background-color: var(--accent-red-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(187, 10, 30, 0.23);
+}
+
+.secondary {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--bg-secondary);
+}
+
+.secondary:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--text-secondary);
+}
