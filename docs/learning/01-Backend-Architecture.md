@@ -19,3 +19,7 @@ Creamos `/app/Http/Controllers/Api/V1`.
 ## Próximos Pasos
 - Configurar `routes/api.php` para apuntar a los nuevos controladores V1.
 - Crear nuestro primer modelo `Project` (para el Portfolio).
+
+## Verificación
+- **Endpoint**: [http://api.test/api/v1/projects](http://api.test/api/v1/projects)
+- **Comando Seeder**: `php artisan db:seed --class=ProjectSeeder`

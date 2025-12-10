@@ -18,6 +18,27 @@ Usamos **CSS Variables** para definir el "Tema" (Dark/Diablo).
 - `typography.css`: Reglas globales de texto.
 - `main.css`: Orquestador.
 
-## Próximos Pasos
-- Solucionar instalación de Composer para el Backend.
 - Crear componente `Hero` en `@features/home` (o `@features/showcase`).
+
+## 4. Setup en Nueva Máquina (Clone)
+Si clonas este repo en otra PC, sigue estos pasos:
+
+### Backend (/api)
+```bash
+cd api
+composer install
+cp .env.example .env
+php artisan key:generate
+# Configura tu base de datos en .env (DB_DATABASE, etc)
+php artisan migrate
+php artisan db:seed --class=ProjectSeeder
+php artisan serve
+```
+
+### Frontend (/client)
+```bash
+cd client
+npm install
+# Crea archivo .env con: VITE_API_URL=http://tu-url-api/api
+npm run dev
+```

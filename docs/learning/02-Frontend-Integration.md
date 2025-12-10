@@ -19,3 +19,7 @@ if (loading) return <Spinner />;
 return projects.map(...)
 ```
 ¡Limpio, testearlo es trivial!
+
+## Verificación
+- **Frontend App**: [http://localhost:5173](http://localhost:5173)
+- **React Hook Test**: Revisa que la consola del navegador no tenga errores de CORS.

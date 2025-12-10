@@ -1,6 +1,7 @@
 import { useProjects } from '@features/showcase/hooks/useProjects';
 import Hero from '@features/home/components/Hero';
 import ProjectGrid from '@features/showcase/components/ProjectGrid';
+import ContactForm from '@features/contact/components/ContactForm';
 
 function App() {
   const { projects, loading, error } = useProjects();
@@ -35,6 +36,8 @@ function App() {
           <ProjectGrid projects={projects} />
         )}
       </section>
+
+      <ContactForm />
     </main>
   )
 }
