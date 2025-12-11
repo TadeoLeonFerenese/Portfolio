@@ -1,68 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  /* RPG Palette */
+  --bg-wood: #1a0b05;
+  --bg-parchment: #f0e6d2;
+  --bg-parchment-dark: #d4c5a9;
+  
+  --border-gold: #c0a062;
+  --border-silver: #a8a9ad;
+  
+  --text-parchment: #f0e6d2;
+  --text-dark: #2c1810;
+  
+  --accent-magic: #9b59b6; /* Mana */
+  --accent-health: #c0392b; /* Health */
+  --accent-stamina: #27ae60; /* Stamina */
+  --accent-gold: #f1c40f;
+  
+  --font-title: 'MedievalSharp', cursive;
+  --font-body: 'Cinzel', serif;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  background-color: var(--bg-wood);
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(0,0,0,0.05) 0px,
+    rgba(0,0,0,0.05) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+  color: var(--text-parchment);
+  font-family: var(--font-body);
+  cursor: url('/assets/cursor-gauntlet.png'), auto; /* Fallback will be handled if image missing */
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Custom Scrollbar - Iron Style */
+::-webkit-scrollbar {
+  width: 12px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+::-webkit-scrollbar-track {
+  background: #000;
+  border-left: 1px solid var(--border-gold);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+::-webkit-scrollbar-thumb {
+  background: var(--border-gold);
+  border: 2px solid #000;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4ac0d;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  color: var(--border-gold);
+  text-shadow: 2px 2px 0 #000;
+  margin: 0;
+}
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+a:hover {
+  text-shadow: 0 0 10px var(--accent-gold);
+  color: #fff;
 }

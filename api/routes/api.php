@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\V1\ContactController;
 
 Route::prefix('v1')->group(function () {
     Route::get('/projects', [ProjectController::class, 'index']);
+    Route::get('/jobs', [\App\Http\Controllers\Api\V1\JobController::class, 'index']);
     Route::post('/contact', [ContactController::class, 'store']);
 });
 

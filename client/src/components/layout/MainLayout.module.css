@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.leftColumn {
+  width: 40%;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rem 0;
+}
+
+.rightColumn {
+  width: 60%;
+  padding: 4rem 0;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .leftColumn {
+    width: 100%;
+    position: relative;
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .rightColumn {
+    width: 100%;
+    padding: 2rem 0;
+  }
+}

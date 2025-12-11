@@ -1,45 +1,29 @@
-import { useProjects } from '@features/showcase/hooks/useProjects';
-import Hero from '@features/home/components/Hero';
-import ProjectGrid from '@features/showcase/components/ProjectGrid';
-import ContactForm from '@features/contact/components/ContactForm';
+import CharacterSheet from './features/hero/CharacterSheet';
+import Spellbook from './features/skills/Spellbook';
+import QuestBoard from './features/quests/QuestBoard';
 
 function App() {
-  const { projects, loading, error } = useProjects();
-
   return (
-    <main>
-      <Hero />
+    <main style={{ paddingBottom: '4rem' }}>
+      <CharacterSheet />
+      <div style={{ margin: '4rem 0' }}>
+        <Spellbook />
+      </div>
+      <QuestBoard />
       
-      <section id="projects" style={{ 
-        maxWidth: '1200px', 
-        margin: '0 auto', 
-        padding: '4rem 2rem' 
+      <footer style={{ 
+        textAlign: 'center', 
+        marginTop: '6rem', 
+        color: 'var(--border-gold)',
+        borderTop: '1px solid var(--border-gold)',
+        paddingTop: '2rem',
+        width: 'max-content',
+        margin: '6rem auto 0 auto'
       }}>
-        <h2 style={{ 
-          textAlign: 'center', 
-          fontSize: '2.5rem', 
-          marginBottom: '3rem',
-          color: 'var(--text-primary)' 
-        }}>
-          Proyectos Destacados
-        </h2>
-
-        {loading && <p style={{ textAlign: 'center' }}>Cargando...</p>}
-        
-        {error && (
-          <p style={{ textAlign: 'center', color: 'var(--accent-red)' }}>
-            Error al cargar proyectos.
-          </p>
-        )}
-
-        {!loading && !error && projects.length > 0 && (
-          <ProjectGrid projects={projects} />
-        )}
-      </section>
-
-      <ContactForm />
+        <p>Built by a Lvl 30 Archmage. © 2025</p>
+      </footer>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;

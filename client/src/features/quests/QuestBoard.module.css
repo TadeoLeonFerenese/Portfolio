@@ -1,0 +1,35 @@
+.boardContainer {
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.boardTitle {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: var(--border-gold);
+    text-shadow: 0 4px 10px #000;
+}
+
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--text-parchment);
+    font-style: italic;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
