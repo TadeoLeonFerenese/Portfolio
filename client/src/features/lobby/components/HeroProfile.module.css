@@ -1,0 +1,137 @@
+/* Container: Row Layout */
+.profileContainer {
+    display: flex;
+    align-items: center; 
+    position: relative;
+    gap: 2rem; /* Distinct separation between Avatar and Plaque */
+    /* Entrance Animation */
+    animation: slideDown 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Avatar: Left Side */
+.avatarWrapper {
+    width: 160px;
+    height: 160px;
+    z-index: 20; /* Above the plaque */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Reduced overlap significantly for better visual separation */
+    margin-right: -10px; 
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* The Gold Frame Asset */
+.avatarFrame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/ui/gold_avatar.png');
+    background-size: 102% 102%; /* Slight zoom to avoid edge artifacts */
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 2;
+    /* RE-APPLY FIX: Screen mode makes black transparent. */
+    mix-blend-mode: screen; 
+    /* Clip corners to circle to remove outer black box entirely */
+    border-radius: 50%;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)) contrast(1.2); /* Boost contrast to pop against wood */
+}
+
+/* The User Image inside the frame */
+.avatarImage {
+    width: 72%; 
+    height: 72%;
+    border-radius: 50%; /* Circular mask */
+    background-size: cover;
+    background-position: center;
+    z-index: 1; /* Behind frame */
+    /* Dark border to separate image from the "screened" frame which might look ghostly */
+    border: 3px solid #000; 
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+    background-color: #333; /* Fallback color so it's not transparent */
+}
+
+/* Nameplate: Rectangular box to the right */
+.infoPlaque {
+    height: 120px; /* Taller */
+    width: 500px; /* Slightly wider */
+    background: #e6cfa3; 
+    /* Improved Gold Border */
+    border: 6px solid #b88648; 
+    box-shadow: 
+        inset 0 0 20px rgba(0,0,0,0.4), 
+        0 10px 25px rgba(0,0,0,0.5);
+    
+    border-radius: 6px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* More padding to separate text from the avatar on the left */
+    padding-left: 30px; /* Standard padding now that overlap is gone */
+    padding-right: 30px;
+    position: relative;
+    z-index: 10;
+    
+    border-top-color: #f0c8a0; /* Highlight */
+    border-left-color: #f0c8a0;
+    border-right-color: #5e4020; /* Shadow */
+    border-bottom-color: #5e4020;
+}
+
+.heroName {
+    font-size: 2rem; 
+    color: #2b1d12; 
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    margin: 0;
+    font-family: var(--font-header), serif;
+    font-weight: 800;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Subtle underline effect */
+    border-bottom: 2px solid rgba(90, 60, 33, 0.2);
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.heroClass {
+    font-family: var(--font-ui), sans-serif;
+    color: #5a3c21;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 8px;
+}
+
+/* Name tag below avatar */
+.avatarNameTag {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4a3018; /* Dark wood */
+    color: #e5bd70; /* Gold text */
+    padding: 4px 15px;
+    border: 2px solid #bd9248;
+    border-radius: 4px;
+    font-family: var(--font-header), serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 30;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+    white-space: nowrap;
+    text-shadow: 1px 1px 0 #000;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

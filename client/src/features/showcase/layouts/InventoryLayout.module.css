@@ -1,0 +1,31 @@
+.dungeonContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: #050505;
+  background-image: url("../../../assets/bg-diablo.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.contentFrame {
+  z-index: 10;
+  animation: fadeIn 1s ease-out;
+}
+
+.fog {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(10, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
