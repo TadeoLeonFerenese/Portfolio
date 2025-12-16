@@ -47,60 +47,69 @@ const ContactForm = () => {
       
       {status === 'success' ? (
         <div className={styles.successMessage}>
-          <h3>¡Mensaje Enviado!</h3>
+          <h3 className={styles.stamp}>CASE CLOSED</h3>
           <p>{serverMessage}</p>
-          <Button onClick={() => setStatus('idle')} variant="outline">Enviar otro</Button>
+          <Button onClick={() => setStatus('idle')} variant="outline">NEW REPORT</Button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.field}>
-            <label htmlFor="name" className={styles.label}>Nombre</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
-            />
-            {errors.name && <span className={styles.errorText}>{errors.name[0]}</span>}
+        <div className={styles.paperSheet}>
+          <div className={styles.paperHeader}>
+             <span className={styles.stampConfidential}>CONFIDENTIAL</span>
+             <h3>POLICE REPORT // CONTACT</h3>
           </div>
+          
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.field}>
+              <label htmlFor="name" className={styles.label}>AGENT NAME:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Kennedy, Leon S."
+                value={formData.name}
+                onChange={handleChange}
+                className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
+              />
+              {errors.name && <span className={styles.errorText}>{errors.name[0]}</span>}
+            </div>
 
-          <div className={styles.field}>
-            <label htmlFor="email" className={styles.label}>Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
-            />
-            {errors.email && <span className={styles.errorText}>{errors.email[0]}</span>}
-          </div>
+            <div className={styles.field}>
+              <label htmlFor="email" className={styles.label}>COMM FREQUENCY (EMAIL):</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="leon@rpd.gov"
+                value={formData.email}
+                onChange={handleChange}
+                className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
+              />
+              {errors.email && <span className={styles.errorText}>{errors.email[0]}</span>}
+            </div>
 
-          <div className={styles.field}>
-            <label htmlFor="message" className={styles.label}>Mensaje</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              value={formData.message}
-              onChange={handleChange}
-              className={`${styles.input} ${errors.message ? styles.inputError : ''}`}
-            />
-            {errors.message && <span className={styles.errorText}>{errors.message[0]}</span>}
-          </div>
+            <div className={styles.field}>
+              <label htmlFor="message" className={styles.label}>MISSION DETAILS:</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                value={formData.message}
+                onChange={handleChange}
+                className={`${styles.input} ${styles.textArea} ${errors.message ? styles.inputError : ''}`}
+              />
+              {errors.message && <span className={styles.errorText}>{errors.message[0]}</span>}
+            </div>
 
-          <div className={styles.actions}>
-            {status === 'error' && !serverMessage && Object.keys(errors).length === 0 && (
-               <p className={styles.generalError}>Error de conexión.</p>
-            )}
-             <Button type="submit" disabled={status === 'submitting'}>
-              {status === 'submitting' ? 'Enviando...' : 'Enviar Mensaje'}
-            </Button>
-          </div>
-        </form>
+            <div className={styles.actions}>
+              {status === 'error' && !serverMessage && Object.keys(errors).length === 0 && (
+                 <p className={styles.generalError}>TRANSMISSION FAILED.</p>
+              )}
+               <button type="submit" className={styles.submitButton} disabled={status === 'submitting'}>
+                {status === 'submitting' ? 'TRANSMITTING...' : 'TRANSMIT DATA'}
+              </button>
+            </div>
+          </form>
+        </div>
       )}
     </section>
   );

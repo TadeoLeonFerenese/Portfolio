@@ -1,0 +1,66 @@
+.tooltipContainer {
+  position: absolute;
+  bottom: 110%; /* Above the slot */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  background: rgba(10, 10, 10, 0.95);
+  border: 2px solid #503f28;
+  padding: 1rem;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  z-index: 1000;
+  pointer-events: none; /* Let clicks pass through if needed */
+  box-shadow: 0 0 20px rgba(0,0,0,0.9);
+}
+
+.itemName {
+  color: #a335ee; /* Epic/Legendary Purple */
+  text-align: center;
+  margin: 0;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px #a335ee;
+}
+
+.itemType {
+  color: #fff;
+  text-align: center;
+  font-size: 0.8rem;
+  margin: 0.2rem 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #503f28, transparent);
+  margin: 0.5rem 0;
+}
+
+.stats {
+  margin: 0.5rem 0;
+}
+
+.statLine {
+  display: flex;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  color: #6969ff; /* Magic Blue */
+}
+
+.plus { color: #6969ff; }
+.tech { color: #fff; font-weight: bold; }
+.desc { color: #888; font-style: italic; }
+
+.fluffText {
+  color: #a86b3a; /* Gold/Bronze */
+  font-style: italic;
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.reqLevel {
+  color: #d11; /* Red requirement */
+  text-align: right;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}

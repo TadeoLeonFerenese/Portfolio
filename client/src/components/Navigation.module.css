@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap');
+
+/* Animation Keyframes */
+@keyframes slideDown {
+  0% {
+    top: -100vh;
+    opacity: 0;
+  }
+
+  100% {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+/* Static Board Structure */
+.staticBoard {
+  position: fixed;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* Entrance Animation */
+  animation: slideDown 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+
+  /* Main Board Container - Background moved to ::after for layering control */
+  background-color: transparent;
+  /* Background Image removed here to allow layering */
+
+  /* Dimensions for the board */
+  width: 400px;
+  height: 700px;
+  /* Fixed height to match 400px width ratio (~1.6) */
+  max-height: 90vh;
+  /* Safety cap for small screens */
+
+  /* Remove debug borders */
+  border: none;
+  box-shadow: none;
+
+  /* Padding to ensure content stays inside the Iron Frame */
+  /* Reduced padding to give Logo more space */
+  padding: 3.5rem 2rem 4rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  /* Slightly tighter gap */
+
+  z-index: 100;
+  /* Standard z-index */
+}
+
+/* Layer 1 (Bottom): Hanging Chains */
+.staticBoard::before {
+  content: '';
+  position: absolute;
+  /* Position above the board */
+  /* Clamp overlap adjustment */
+  bottom: 89%;
+  left: 49%;
+  transform: translateX(-50%);
+
+  /* Width matching the board's width exactly */
+  width: 110%;
+  height: 300px;
+
+  background-image: url('../assets/cadena.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+
+  z-index: -2;
+  /* Lowest layer: Behind the board image */
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.8));
+  pointer-events: none;
+}
+
+/* Layer 2 (Middle): Board Background */
+.staticBoard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 105%;
+  height: 100%;
+
+  background-image: url('../assets/menu.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  z-index: -1;
+  /* Layer on top of chains (-2) but behind content (auto) */
+  pointer-events: none;
+}
+
+
+/* Header Sections */
+.boardHeader {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  /* Reduced bottom margin */
+}
+
+.logoImage {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-left: 7px;
+  margin-top: 20px;
+  /* Make logo pop more */
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.9)) brightness(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Buttons Container */
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Center the buttons since width is < 100% */
+  margin-left: 30px;
+  gap: 0;
+  width: 100%;
+}
+
+/* Button Structure */
+.menuBtn {
+  /* Layout - Compact */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Dimensions */
+  width: 90%;
+  height: 7.5rem;
+  padding: 0;
+  margin: -1rem 0;
+
+  /* Text Style - Smaller */
+  text-decoration: none;
+  font-family: 'warcraftFont';
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  /* Reduced font size */
+  color: #ffcc00;
+  /* Warcraft Gold */
+  letter-spacing: 4px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+
+  /* Button Visuals - Image Mask */
+  background-color: transparent;
+  background-image: url('../assets/btn.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  /* Remove old borders/gradients */
+  border: none;
+
+  /* Depth & Glow - Keep external shadow, remove inset if it clashes */
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.7));
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover State - Brighter & "Active" feel */
+.menuBtn:hover {
+  /* Remove gradient override */
+  color: #ffffff;
+  width: 87%;
+  /* Slight expansion on hover */
+
+  /* Enhanced Glow via Filter */
+  filter: drop-shadow(0 0 10px rgba(0, 100, 255, 0.5)) brightness(1.2);
+
+  text-shadow: 0 0 8px rgba(0, 200, 255, 0.8);
+  transform: translateY(-1px);
+}
+
+/* Dashboard.css */
+
+@font-face {
+  font-family: 'warcraftFont';
+  src: url('../assets/fonts/warcraftFont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.mainTitle {
+  font-family: 'warcraftFont', serif;
+  color: #ff9900;
+  /* Warcraft Gold */
+  font-size: 3rem;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px #000;
+  line-height: 2;
+}
