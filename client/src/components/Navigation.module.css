@@ -6,6 +6,7 @@
     top: -100vh;
     opacity: 0;
   }
+
   100% {
     top: 50%;
     opacity: 1;
@@ -18,45 +19,50 @@
   left: 50px;
   top: 50%;
   transform: translateY(-50%);
-  
+
   /* Entrance Animation */
   animation: slideDown 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  
+
   /* Main Board Container */
-  background-color: transparent; 
+  background-color: transparent;
   background-image: url('../assets/menu.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-origin: border-box;
   background-clip: border-box;
-  
+
   /* Dimensions for the board */
   width: 400px;
-  height: 700px; /* Fixed height to match 400px width ratio (~1.6) */
-  max-height: 90vh; /* Safety cap for small screens */
+  height: 700px;
+  /* Fixed height to match 400px width ratio (~1.6) */
+  max-height: 90vh;
+  /* Safety cap for small screens */
 
   /* Remove debug borders */
   border: none;
-  box-shadow: none; 
-  
+  box-shadow: none;
+
   /* Padding to ensure content stays inside the Iron Frame */
   /* Reduced padding to give Logo more space */
-  padding: 3.5rem 2rem 4rem 2rem; 
-  
+  padding: 3.5rem 2rem 4rem 2rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem; /* Slightly tighter gap */
-  
-  z-index: 100; /* Standard z-index */
+  gap: 1.2rem;
+  /* Slightly tighter gap */
+
+  z-index: 100;
+  /* Standard z-index */
 }
 
 /* Header Sections */
 .boardHeader {
   text-align: center;
   width: 100%;
-  margin-bottom: 0.5rem; /* Reduced bottom margin */
+  margin-bottom: 0.5rem;
+  /* Reduced bottom margin */
 }
 
 .logoImage {
@@ -64,66 +70,62 @@
   max-width: 400px;
   height: auto;
   /* Make logo pop more */
-  filter: drop-shadow(0 5px 8px rgba(0,0,0,0.9)) brightness(1.1); 
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.9)) brightness(1.1);
   transition: transform 0.3s ease;
 }
 
 .logoImage:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.4)) brightness(1.2); 
-}
-
-.divider {
-  width: 80%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #8B4513, transparent);
+  filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.4)) brightness(1.2);
 }
 
 /* Buttons Container */
 .linksContainer {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the buttons since width is < 100% */
-  gap: 0.8rem;
+  align-items: center;
+  /* Center the buttons since width is < 100% */
+  gap: 0;
   width: 100%;
 }
 
-/* Button Structure (Placeholder for design phase) */
-/* Reforged Blue Button Style - Glassy & Metallic */
+/* Button Structure */
 .menuBtn {
   /* Layout - Compact */
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 85%; /* Reduced width so they don't dominate */
-  padding: 0.7rem; /* Reduced padding */
-  margin-bottom: 0.5rem;
-  
+  /* Dimensions */
+  width: 90%;
+  height: 7.5rem;
+  padding: 0;
+  margin: -1rem 0;
+
   /* Text Style - Smaller */
   text-decoration: none;
-  font-family: 'Cinzel', serif;
+  font-family: 'warcraftFont';
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.95rem; /* Reduced font size */
-  color: #ffcc00; /* Warcraft Gold */
-  letter-spacing: 1.2px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+  font-size: 1.2rem;
+  /* Reduced font size */
+  color: #ffcc00;
+  /* Warcraft Gold */
+  letter-spacing: 2.2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
 
-  /* Button Visuals - Blue Glass Gradient */
-  background: linear-gradient(180deg, #003366 0%, #001a33 50%, #000d1a 100%);
-  
-  /* Metallic Border Look */
-  border: 2px solid #556677; /* Slate/Iron border base */
-  border-top-color: #778899; /* Lighter top for 3D effect */
-  border-bottom-color: #334455; /* Darker bottom */
-  border-radius: 3px; 
+  /* Button Visuals - Image Mask */
+  background-color: transparent;
+  background-image: url('../assets/btn.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 
-  /* Depth & Glow */
-  box-shadow: 
-    inset 0 1px 0 rgba(255,255,255,0.2), /* Top highlight */
-    inset 0 0 15px rgba(0, 100, 255, 0.15), /* Inner Blue Glow - softer */
-    0 3px 6px rgba(0,0,0,0.7); /* Drop shadow */
-    
+  /* Remove old borders/gradients */
+  border: none;
+
+  /* Depth & Glow - Keep external shadow, remove inset if it clashes */
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.7));
+
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -131,45 +133,34 @@
 
 /* Hover State - Brighter & "Active" feel */
 .menuBtn:hover {
-  background: linear-gradient(180deg, #004488 0%, #002244 100%);
+  /* Remove gradient override */
   color: #ffffff;
-  border-color: #8899aa;
-  width: 87%; /* Slight expansion on hover */
-  
-  /* Enhanced Glow */
-  box-shadow: 
-    inset 0 0 20px rgba(0, 200, 255, 0.4),
-    0 0 10px rgba(0, 100, 255, 0.5); 
-    
+  width: 87%;
+  /* Slight expansion on hover */
+
+  /* Enhanced Glow via Filter */
+  filter: drop-shadow(0 0 10px rgba(0, 100, 255, 0.5)) brightness(1.2);
+
   text-shadow: 0 0 8px rgba(0, 200, 255, 0.8);
   transform: translateY(-1px);
-}
-
-/* Active State - "Pressed" or High-Energy */
-.active {
-  color: #ffffff;
-  background: linear-gradient(180deg, #002244 0%, #001122 100%);
-  border-color: #8a6f04; /* Gold Border for selected */
-  box-shadow: 
-    inset 0 0 15px rgba(255, 204, 0, 0.3), /* Gold inner glow */
-    0 0 10px rgba(255, 204, 0, 0.4);
 }
 
 /* Dashboard.css */
 
 @font-face {
-    font-family: 'warcraftFont'; 
-    src: url('../assets/fonts/warcraftFont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'warcraftFont';
+  src: url('../assets/fonts/warcraftFont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .mainTitle {
-    font-family: 'warcraftFont', serif;
-    color: #ff9900; /* Warcraft Gold */
-    font-size: 3rem;
-    margin: 0;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 2px #000;
-    line-height: 2;
+  font-family: 'warcraftFont', serif;
+  color: #ff9900;
+  /* Warcraft Gold */
+  font-size: 3rem;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px #000;
+  line-height: 2;
 }
