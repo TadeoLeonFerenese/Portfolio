@@ -48,6 +48,8 @@ async function cleanImage(relativePath, targetColorStr) {
 
 // Execute
 (async () => {
-    await cleanImage('src/assets/card_frame.png', '#FFFFFF');
-    await cleanImage('src/assets/ui/gold_avatar.png', '#000000');
+    // await cleanImage('src/assets/card_frame.png', '#FFFFFF');
+    // await cleanImage('src/assets/ui/gold_avatar.png', '#000000');
+    console.log("Cleaning chain link...");
+    await cleanImage('src/assets/chain_link.png', '#FFFFFF');
 })();

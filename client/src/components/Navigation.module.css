@@ -23,14 +23,9 @@
   /* Entrance Animation */
   animation: slideDown 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 
-  /* Main Board Container */
+  /* Main Board Container - Background moved to ::after for layering control */
   background-color: transparent;
-  background-image: url('../assets/menu.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-origin: border-box;
-  background-clip: border-box;
+  /* Background Image removed here to allow layering */
 
   /* Dimensions for the board */
   width: 400px;
@@ -57,6 +52,51 @@
   /* Standard z-index */
 }
 
+/* Layer 1 (Bottom): Hanging Chains */
+.staticBoard::before {
+  content: '';
+  position: absolute;
+  /* Position above the board */
+  /* Clamp overlap adjustment */
+  bottom: 89%;
+  left: 49%;
+  transform: translateX(-50%);
+
+  /* Width matching the board's width exactly */
+  width: 110%;
+  height: 300px;
+
+  background-image: url('../assets/cadena.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+
+  z-index: -2;
+  /* Lowest layer: Behind the board image */
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.8));
+  pointer-events: none;
+}
+
+/* Layer 2 (Middle): Board Background */
+.staticBoard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 105%;
+  height: 100%;
+
+  background-image: url('../assets/menu.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  z-index: -1;
+  /* Layer on top of chains (-2) but behind content (auto) */
+  pointer-events: none;
+}
+
+
 /* Header Sections */
 .boardHeader {
   text-align: center;
@@ -69,14 +109,11 @@
   width: 100%;
   max-width: 400px;
   height: auto;
+  margin-left: 7px;
+  margin-top: 20px;
   /* Make logo pop more */
   filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.9)) brightness(1.1);
   transition: transform 0.3s ease;
-}
-
-.logoImage:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.4)) brightness(1.2);
 }
 
 /* Buttons Container */
@@ -85,6 +122,7 @@
   flex-direction: column;
   align-items: center;
   /* Center the buttons since width is < 100% */
+  margin-left: 30px;
   gap: 0;
   width: 100%;
 }
