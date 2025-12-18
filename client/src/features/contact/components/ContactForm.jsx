@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { submitContact } from '../api';
 import Button from '@components/ui/Button';
 import styles from './ContactForm.module.css';
@@ -8,6 +8,16 @@ const ContactForm = () => {
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
   const [errors, setErrors] = useState({});
   const [serverMessage, setServerMessage] = useState('');
+  const textareaRef = useRef(null);
+
+  // Auto-resize textarea
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  }, [formData.message]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,17 +65,16 @@ const ContactForm = () => {
         <div className={styles.paperSheet}>
           <div className={styles.paperHeader}>
              <span className={styles.stampConfidential}>CONFIDENTIAL</span>
-             <h3>POLICE REPORT // CONTACT</h3>
           </div>
           
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.field}>
-              <label htmlFor="name" className={styles.label}>AGENT NAME:</label>
+              <label htmlFor="name" className={styles.label}>NOMBRE DEL GUERRERO:</label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Kennedy, Leon S."
+                placeholder="leeroy jenkins"
                 value={formData.name}
                 onChange={handleChange}
                 className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
@@ -74,12 +83,12 @@ const ContactForm = () => {
             </div>
 
             <div className={styles.field}>
-              <label htmlFor="email" className={styles.label}>COMM FREQUENCY (EMAIL):</label>
+              <label htmlFor="email" className={styles.label}>CORREO ELECTRÓNICO ARCANO:</label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="leon@rpd.gov"
+                placeholder="Ejemplo@email.com"
                 value={formData.email}
                 onChange={handleChange}
                 className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
@@ -88,11 +97,12 @@ const ContactForm = () => {
             </div>
 
             <div className={styles.field}>
-              <label htmlFor="message" className={styles.label}>MISSION DETAILS:</label>
+              <label htmlFor="message" className={styles.label}>ESCRIBA SU PETICIÓN:</label>
               <textarea
                 id="message"
                 name="message"
                 rows="5"
+                ref={textareaRef}
                 value={formData.message}
                 onChange={handleChange}
                 className={`${styles.input} ${styles.textArea} ${errors.message ? styles.inputError : ''}`}
@@ -105,7 +115,7 @@ const ContactForm = () => {
                  <p className={styles.generalError}>TRANSMISSION FAILED.</p>
               )}
                <button type="submit" className={styles.submitButton} disabled={status === 'submitting'}>
-                {status === 'submitting' ? 'TRANSMITTING...' : 'TRANSMIT DATA'}
+                {status === 'submitting' ? 'TRANSMITTING...' : 'ENVIAR MENSAJE'}
               </button>
             </div>
           </form>
