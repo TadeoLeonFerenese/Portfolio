@@ -1,27 +1,42 @@
-import CharacterSheet from './features/hero/CharacterSheet';
-import Spellbook from './features/skills/Spellbook';
-import QuestBoard from './features/quests/QuestBoard';
+import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import MainMenu from './features/menu/MainMenu';
+import ScreenOrigin from './features/screens/ScreenOrigin';
+import ScreenProjects from './features/screens/ScreenProjects';
+import ScreenContact from './features/screens/ScreenContact';
+import ArcaneBackground from './components/ui/ArcaneBackground';
 
 function App() {
+  const [currentScreen, setCurrentScreen] = useState('MAIN_MENU');
+
+  const navigateTo = (screen) => {
+    setCurrentScreen(screen);
+  };
+
+  const backToMenu = () => {
+    setCurrentScreen('MAIN_MENU');
+  };
+
   return (
-    <main style={{ paddingBottom: '4rem' }}>
-      <CharacterSheet />
-      <div style={{ margin: '4rem 0' }}>
-        <Spellbook />
-      </div>
-      <QuestBoard />
-      
-      <footer style={{ 
-        textAlign: 'center', 
-        marginTop: '6rem', 
-        color: 'var(--border-gold)',
-        borderTop: '1px solid var(--border-gold)',
-        paddingTop: '2rem',
-        width: 'max-content',
-        margin: '6rem auto 0 auto'
-      }}>
-        <p>Built by a Lvl 30 Archmage. © 2025</p>
-      </footer>
+    <main style={{ backgroundColor: '#1a0b05', minHeight: '100vh', overflow: 'hidden', position: 'relative' }}>
+      <ArcaneBackground />
+      <AnimatePresence mode="wait">
+        {currentScreen === 'MAIN_MENU' && (
+          <MainMenu key="menu" onNavigate={navigateTo} />
+        )}
+
+        {currentScreen === 'ORIGIN' && (
+          <ScreenOrigin key="origin" onBack={backToMenu} />
+        )}
+
+        {currentScreen === 'PROJECTS' && (
+          <ScreenProjects key="projects" onBack={backToMenu} />
+        )}
+
+        {currentScreen === 'CONTACT' && (
+          <ScreenContact key="contact" onBack={backToMenu} />
+        )}
+      </AnimatePresence>
     </main>
   );
 }

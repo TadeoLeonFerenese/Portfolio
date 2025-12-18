@@ -1,0 +1,38 @@
+.screenContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0d0604; /* Darker dungeon background specific for quests */
+    overflow-y: auto;
+    z-index: 50;
+    padding: 1rem;
+}
+
+.backButton {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    background: var(--bg-parchment);
+    border: 2px solid var(--border-gold);
+    color: var(--text-dark);
+    font-family: var(--font-title);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: all 0.2s;
+}
+
+.backButton:hover {
+    background: var(--accent-health); /* Red for closing quests */
+    color: #fff;
+    border-color: #fff;
+}
+
+.content {
+    max-width: 1400px;
+    margin: 4rem auto 0 auto;
+}

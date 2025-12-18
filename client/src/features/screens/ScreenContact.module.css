@@ -1,0 +1,99 @@
+.screenContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.85); /* Semi-transparent overlay style */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+}
+
+.backButton {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-family: var(--font-title);
+}
+
+.parchment {
+    width: 100%;
+    max-width: 600px;
+    background: var(--bg-parchment);
+    padding: 3rem;
+    border-radius: 4px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    position: relative;
+    border: 10px solid transparent;
+    border-image: url('/assets/border-frame.png') 30 stretch; /* Fallback to solid if image missing */
+}
+
+/* Fallback border if image missing */
+.parchment {
+    border: 4px solid var(--border-gold);
+}
+
+.title {
+    text-align: center;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.field label {
+    font-family: var(--font-title);
+    color: #5c3a21;
+    font-weight: bold;
+}
+
+.field input, .field textarea {
+    padding: 0.8rem;
+    background: rgba(255,255,255,0.5);
+    border: 2px solid #8e7d5e;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #2c1810;
+}
+
+.field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--accent-magic);
+    background: #fff;
+}
+
+.sendButton {
+    background: var(--text-dark);
+    color: var(--border-gold);
+    border: 2px solid var(--border-gold);
+    padding: 1rem;
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 1rem;
+}
+
+.sendButton:hover {
+    background: var(--accent-magic);
+    color: #fff;
+    transform: scale(1.02);
+}

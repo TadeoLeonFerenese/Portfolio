@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&family=Lato:wght@300;400;700&family=Fauna+One&display=swap');
 
 :root {
   /* RPG Palette */
@@ -34,7 +34,8 @@ body {
   );
   color: var(--text-parchment);
   font-family: var(--font-body);
-  cursor: url('/assets/cursor-gauntlet.png'), auto; /* Fallback will be handled if image missing */
+  /* WoW Style Gauntlet Cursor */
+  cursor: url('./assets/cursor/NORMAL.cur'), auto;
   overflow-x: hidden;
 }
 
