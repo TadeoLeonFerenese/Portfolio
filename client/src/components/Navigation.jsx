@@ -1,12 +1,19 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import styles from './Navigation.module.css';
 import logo from '../assets/Logo.png';
 
 const Navigation = () => {
   const location = useLocation();
+  const [animationKey, setAnimationKey] = useState(0);
+
+  // Reiniciar animación cada vez que cambia la ruta
+  useEffect(() => {
+    setAnimationKey(prev => prev + 1);
+  }, [location.pathname]);
 
   return (
-    <nav className={styles.staticBoard}>
+    <nav key={animationKey} className={styles.staticBoard}>
       
       <div className={styles.boardHeader}>
           <img src={logo} alt="Portfolio Logo" className={styles.logoImage} />
