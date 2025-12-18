@@ -20,8 +20,8 @@
   top: 50%;
   transform: translateY(-50%);
 
-  /* Entrance Animation */
-  animation: slideDown 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  /* Entrance Animation - más lenta y elegante */
+  animation: slideDown 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 
   /* Main Board Container - Background moved to ::after for layering control */
   background-color: transparent;

@@ -102,6 +102,7 @@ const ContactForm = () => {
                 id="message"
                 name="message"
                 rows="5"
+                placeholder="Escriba su mensaje aquí..."
                 ref={textareaRef}
                 value={formData.message}
                 onChange={handleChange}
