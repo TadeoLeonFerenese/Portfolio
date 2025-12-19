@@ -8,7 +8,7 @@
   }
 
   100% {
-    top: 50%;
+    top: 45%;
     opacity: 1;
   }
 }
@@ -17,10 +17,11 @@
 .staticBoard {
   position: fixed;
   left: 50px;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
 
-  /* Animation removed - always visible */
+  /* Animation for desktop - slide down from above */
+  animation: slideDown 4.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 
   /* Main Board Container - Background moved to ::after for layering control */
   background-color: transparent;
