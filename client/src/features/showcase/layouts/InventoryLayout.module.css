@@ -31,3 +31,33 @@
   max-width: 1400px;
   margin: 0 auto;
 }
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .dungeonContainer {
+    padding: 3rem 1.5rem;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+  .dungeonContainer {
+    padding: 2rem 1rem;
+    padding-top: 120px;
+    /* Space for fixed header (100px) + margin */
+    background-attachment: scroll;
+    /* Performance */
+    background-size: cover;
+    background-position: center center;
+    /* Mejor centrado */
+  }
+
+  .fog {
+    background: radial-gradient(ellipse at center,
+        rgba(0, 0, 0, 0.3) 0%,
+        /* Más oscuro para mejor contraste */
+        rgba(0, 0, 0, 0.6) 100%);
+  }
+}

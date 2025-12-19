@@ -20,17 +20,16 @@
   top: 50%;
   transform: translateY(-50%);
 
-  /* Entrance Animation - más lenta y elegante */
-  animation: slideDown 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  /* Animation removed - always visible */
 
   /* Main Board Container - Background moved to ::after for layering control */
   background-color: transparent;
   /* Background Image removed here to allow layering */
 
   /* Dimensions for the board */
-  width: 400px;
-  height: 700px;
-  /* Fixed height to match 400px width ratio (~1.6) */
+  width: 350px;
+  height: 600px;
+  /* Adjusted height for better proportion */
   max-height: 90vh;
   /* Safety cap for small screens */
 
@@ -40,12 +39,12 @@
 
   /* Padding to ensure content stays inside the Iron Frame */
   /* Reduced padding to give Logo more space */
-  padding: 3.5rem 2rem 4rem 2rem;
+  padding: 3rem 1.5rem 3.5rem 1.5rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
   /* Slightly tighter gap */
 
   z-index: 100;
@@ -222,4 +221,178 @@
   text-transform: uppercase;
   text-shadow: 2px 2px 2px #000;
   line-height: 2;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .staticBoard {
+    width: 300px;
+    height: 550px;
+    left: 30px;
+    padding: 2.5rem 1.5rem 3rem 1.5rem;
+    gap: 0.8rem;
+  }
+
+  .logoImage {
+    max-width: 280px;
+    margin-top: 15px;
+  }
+
+  .menuBtn {
+    height: 6rem;
+    font-size: 1rem;
+    letter-spacing: 3px;
+  }
+}
+
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+  .staticBoard {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: -100%;
+    /* Hidden off-screen above */
+    transform: none;
+    width: 80%;
+    /* Aumentado 10% (de 65%) */
+    max-width: 385px;
+    /* Aumentado 10% (de 350px) */
+    margin: 0 auto;
+    height: 60%;
+    max-height: 96vh;
+    /* Aumentado 20% (de 80vh) */
+    animation: none;
+    transition: top 0.3s ease-in-out;
+    z-index: 1000;
+    padding: 1.5rem 1rem;
+  }
+
+  /* Show menu when open - más abajo */
+  .staticBoard.mobileMenuOpen {
+    top: 140px;
+    /* Ajustado para header de 100px + margen */
+  }
+
+  /* Hide chains in mobile menu */
+  .staticBoard.mobileMenuOpen::before {
+    display: none;
+  }
+
+  /* Home page: Navigation centered and always visible */
+  .staticBoard.homePageNav {
+    left: 48% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 85% !important;
+    max-width: 320px !important;
+    height: auto !important;
+    padding: 2rem 1.2rem !important;
+    margin: 0 auto !important;
+  }
+
+  /* Hide chains on home page */
+  .staticBoard.homePageNav::before {
+    display: none !important;
+  }
+
+  .staticBoard::before {
+    height: 200px;
+    /* Reduced chain height */
+  }
+
+  .logoImage {
+    max-width: 220px;
+  }
+
+  .menuBtn {
+    height: 5.5rem;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* ===== BURGER MENU BUTTON ===== */
+
+.burgerButton {
+  display: none;
+  /* Hidden on desktop */
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+  width: 40px;
+  /* Reducido de 50px */
+  height: 40px;
+  /* Reducido de 50px */
+  background: linear-gradient(135deg, rgba(40, 30, 20, 0.9), rgba(20, 15, 10, 0.95));
+  border: 2px solid #8b6914;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  padding: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  /* Reducido de 5px */
+}
+
+.burgerButton:hover {
+  background: linear-gradient(135deg, rgba(50, 40, 25, 1), rgba(30, 20, 15, 1));
+  border-color: #d4af37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  transform: scale(1.05);
+}
+
+.burgerButton:active {
+  transform: scale(0.95);
+}
+
+/* Burger lines */
+.burgerLine {
+  display: block;
+  width: 24px;
+  /* Reducido de 30px */
+  height: 3px;
+  background: #d4af37;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Overlay (dark background when menu open) */
+.mobileOverlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .burgerButton {
+    display: flex;
+  }
+
+  .mobileOverlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    animation: fadeInOverlay 0.3s ease;
+  }
+
+  @keyframes fadeInOverlay {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
 }

@@ -1,0 +1,73 @@
+/* Header Component */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    /* Aumentado de 80px para dar más espacio al logo */
+    background: linear-gradient(180deg, rgba(20, 15, 10, 0.95) 0%, rgba(20, 15, 10, 0.7) 100%);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid rgba(139, 105, 20, 0.3);
+    z-index: 900;
+    display: none;
+    /* Hidden on desktop */
+    align-items: center;
+    justify-content: space-between;
+    /* Logo izquierda, título derecha */
+    padding: 0 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 65px;
+    /* Más grande */
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.headerTitle {
+    font-family: 'WarcraftFont', serif;
+    font-size: 1.2rem;
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+/* When only logo is shown (non-home pages) */
+.header.logoOnly {
+    justify-content: flex-end;
+    /* Logo a la derecha */
+    padding-right: 20px;
+}
+
+.header.logoOnly .logo {
+    height: 80px;
+    /* Más grande que en home */
+}
+
+/* Show header only on mobile */
+@media (max-width: 768px) {
+    .header {
+        display: flex;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .logo {
+        height: 50px;
+    }
+
+    .headerTitle {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+}

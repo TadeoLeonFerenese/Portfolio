@@ -105,3 +105,53 @@
 .soundToggleBtn:active {
     transform: scale(0.95);
 }
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .lobbyContainer {
+        background-size: 120rem;
+    }
+
+    .soundToggleBtn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+    .lobbyContainer {
+        background-size: cover;
+        background-position: center center;
+        /* Mejor centrado */
+        background-attachment: scroll;
+        /* Mejor performance */
+        padding-top: 120px;
+        /* Space for fixed header (100px) + margin */
+    }
+
+    .rainVideo {
+        opacity: 0.3;
+        /* Reducido para mejor visibilidad */
+        background-attachment: scroll;
+    }
+
+    .soundToggleBtn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .boardGrid {
+        padding: 1rem 0.5rem;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}

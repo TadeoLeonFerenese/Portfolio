@@ -320,3 +320,36 @@
   animation-delay: 2.1s;
   animation-duration: 10s;
 }
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .roomContainer {
+    padding-top: 3rem;
+    background-size: 100rem;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+  .roomContainer {
+    padding-top: 120px;
+    /* Space for fixed header (100px) + margin */
+    background-size: cover;
+    background-position: center center;
+    /* Mejor centrado */
+    background-attachment: scroll;
+    /* Mejor performance */
+  }
+
+  /* Reduce particle count on mobile for performance */
+  .particle:nth-child(n+16) {
+    display: none;
+  }
+
+  /* Reduce particle opacity for better content visibility */
+  .particle {
+    opacity: 0.4;
+  }
+}
