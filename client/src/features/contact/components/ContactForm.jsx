@@ -28,8 +28,40 @@ const ContactForm = () => {
     }
   };
 
+  // Frontend validation
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Validar nombre (mínimo 3 caracteres)
+    if (!formData.name || formData.name.trim().length < 3) {
+      newErrors.name = ['El nombre debe tener al menos 3 caracteres.'];
+    }
+
+    // Validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email || !emailRegex.test(formData.email)) {
+      newErrors.email = ['Debe ingresar un email válido.'];
+    }
+
+    // Validar mensaje (mínimo 10 caracteres)
+    if (!formData.message || formData.message.trim().length < 10) {
+      newErrors.message = ['El mensaje debe tener al menos 10 caracteres.'];
+    }
+
+    return newErrors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validación del lado del cliente
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setStatus('error');
+      return; // No enviar si hay errores
+    }
+
     setStatus('submitting');
     setErrors({});
     setServerMessage('');

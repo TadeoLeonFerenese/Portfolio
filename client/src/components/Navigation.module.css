@@ -183,6 +183,27 @@
   transform: translateY(-1px);
 }
 
+/* Active State - Current Page (Disabled/Grayed Out) */
+.menuBtn.active {
+  color: #666666;
+  /* Gray text */
+  pointer-events: none;
+  /* Block clicks */
+  cursor: not-allowed;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) grayscale(0.8) brightness(0.6);
+  opacity: 0.5;
+}
+
+/* Prevent hover on active button */
+.menuBtn.active:hover {
+  color: #666666;
+  width: 90%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) grayscale(0.8) brightness(0.6);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  transform: none;
+}
+
+
 /* Dashboard.css */
 
 @font-face {
