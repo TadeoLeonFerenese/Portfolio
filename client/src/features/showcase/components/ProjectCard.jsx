@@ -3,39 +3,55 @@ import styles from './ProjectCard.module.css';
 
 const ProjectCard = ({ project }) => {
   return (
-    <article className={styles.card}>
-      <div className={styles.imageContainer}>
-        {project.image_url ? (
-          <img src={project.image_url} alt={project.title} className={styles.image} />
-        ) : (
-          <div className={styles.placeholder}>No Image</div>
-        )}
-      </div>
-      <div className={styles.content}>
-        <div className={styles.header}>
-          <h3 className={styles.title}>{project.title}</h3>
-          {project.is_featured && <span className={styles.badge}>Destacado</span>}
-        </div>
-        <p className={styles.description}>{project.description}</p>
-        
-        <div className={styles.tags}>
-          {project.tags && project.tags.map(tag => (
-            <span key={tag} className={styles.tag}>{tag}</span>
-          ))}
-        </div>
+    <article className={styles.questScroll}>
+      {/* Quest Marker */}
+      <div className={styles.questMarker}>!</div>
+      
+      {/* Legendary Badge */}
+      {project.is_featured && (
+        <div className={styles.legendaryBadge}>Legendary</div>
+      )}
 
-        <div className={styles.links}>
-          {project.link_demo && (
-            <a href={project.link_demo} target="_blank" rel="noopener noreferrer" className={styles.link}>
-              Ver Demo
-            </a>
-          )}
-          {project.link_repo && (
-            <a href={project.link_repo} target="_blank" rel="noopener noreferrer" className={styles.link}>
-              Código
-            </a>
-          )}
+      {/* Quest Title */}
+      <h3 className={styles.questTitle}>{project.title}</h3>
+
+      {/* Quest Image/Preview */}
+      {project.image_url && (
+        <div className={styles.questImage}>
+          <img src={project.image_url} alt={project.title} />
         </div>
+      )}
+
+      {/* Objectives Section */}
+      <div className={styles.objectives}>
+        <h4 className={styles.objectivesHeader}>Objectives:</h4>
+        <p className={styles.questDescription}>{project.description}</p>
+      </div>
+
+      {/* Technology Tags */}
+      {project.tags && project.tags.length > 0 && (
+        <div className={styles.skills}>
+          <span className={styles.skillsLabel}>Required Skills:</span>
+          <div className={styles.tagsList}>
+            {project.tags.map(tag => (
+              <span key={tag} className={styles.skillTag}>{tag}</span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Quest Actions */}
+      <div className={styles.questActions}>
+        {project.link_demo && (
+          <a href={project.link_demo} target="_blank" rel="noopener noreferrer" className={styles.questButton}>
+            Accept Quest
+          </a>
+        )}
+        {project.link_repo && (
+          <a href={project.link_repo} target="_blank" rel="noopener noreferrer" className={styles.questButton}>
+            View Details
+          </a>
+        )}
       </div>
     </article>
   );

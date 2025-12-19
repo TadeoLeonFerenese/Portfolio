@@ -1,104 +1,181 @@
-.card {
-  background-color: var(--bg-card);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
+/* Quest Scroll - Papyrus Card */
+.questScroll {
+  position: relative;
+  background-image: url('../../../assets/parchment_box.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 2.5rem 2rem;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5));
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
-  border-color: rgba(187, 10, 30, 0.3); /* Subtle red glow */
+.questScroll:hover {
+  transform: translateY(-8px);
+  filter: drop-shadow(6px 8px 16px rgba(0, 0, 0, 0.7));
 }
 
-.imageContainer {
-  height: 200px;
-  background-color: var(--bg-secondary);
+/* Quest Marker Icon */
+.questMarker {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, #ffd700 0%, #daa520 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1a0f00;
+  box-shadow:
+    0 0 15px rgba(255, 215, 0, 0.6),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+  font-family: 'WarcraftFont', serif;
+}
+
+/* Legendary Badge */
+.legendaryBadge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  color: #1a0f00;
+  font-family: 'WarcraftFont', serif;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+  letter-spacing: 1px;
+}
+
+/* Quest Title */
+.questTitle {
+  font-family: 'WarcraftFont', serif;
+  font-size: 1.5rem;
+  color: #2c1810;
+  text-align: center;
+  margin: 3rem 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Quest Image */
+.questImage {
+  width: 100%;
+  height: 150px;
+  margin: 1rem 0;
   overflow: hidden;
+  border: 3px solid #8b6914;
+  border-radius: 4px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.image {
+.questImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-.card:hover .image {
-  transform: scale(1.05);
-}
-
-.content {
-  padding: 1.5rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 0.75rem;
-}
-
-.title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  color: var(--text-primary);
-  margin: 0;
-}
-
-.badge {
-  background-color: var(--accent-gold);
-  color: var(--bg-primary);
-  font-size: 0.7rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.description {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
+/* Objectives Section */
+.objectives {
+  margin: 1.5rem 0;
   flex-grow: 1;
 }
 
-.tags {
+.objectivesHeader {
+  font-family: 'WarcraftFont', serif;
+  font-size: 1.1rem;
+  color: #8b6914;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.questDescription {
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  color: #3d2817;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Skills/Tags Section */
+.skills {
+  margin: 1.5rem 0;
+}
+
+.skillsLabel {
+  font-family: 'WarcraftFont', serif;
+  font-size: 0.9rem;
+  color: #8b6914;
+  display: block;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.tagsList {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
 }
 
-.tag {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: var(--text-muted);
+.skillTag {
+  background: linear-gradient(135deg, #cd7f32 0%, #8b5a00 100%);
+  color: #fff;
+  font-family: Georgia, serif;
   font-size: 0.75rem;
   padding: 0.25rem 0.6rem;
-  border-radius: 1rem;
+  border-radius: 3px;
+  border: 1px solid #8b6914;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.links {
+/* Quest Actions */
+.questActions {
   display: flex;
   gap: 1rem;
+  justify-content: center;
   margin-top: auto;
+  padding-top: 1rem;
 }
 
-.link {
-  color: var(--accent-red);
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: color 0.2s;
+.questButton {
+  font-family: 'WarcraftFont', serif;
+  background: linear-gradient(135deg, #d4af37 0%, #aa8c2a 100%);
+  color: #1a0f00;
+  padding: 0.7rem 1.5rem;
+  border: 2px solid #8b6914;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.link:hover {
-  color: var(--accent-red-hover);
-  text-decoration: underline;
+.questButton:hover {
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.questButton:active {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }

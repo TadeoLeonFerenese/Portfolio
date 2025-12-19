@@ -46,7 +46,20 @@
     padding: 0 2rem;
 }
 
-
+.rainVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+    /* Por encima del fondo pero debajo del contenido */
+    pointer-events: none;
+    /* Para que no bloquee clics */
+    opacity: 0.6;
+    /* Ajustá la opacidad a tu gusto */
+}
 
 /* Sound Controller - Refined Medieval Style */
 .soundToggleBtn {

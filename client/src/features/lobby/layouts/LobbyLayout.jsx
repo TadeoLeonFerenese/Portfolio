@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './LobbyLayout.module.css';
 import ServerScroll from '../components/ServerScroll';
-import RainEffect from '../components/RainEffect';
+// import RainEffect from '../components/RainEffect';
 import stormSound from '../../../assets/sonidos/lluvia.mp3';
+import rainVideo from '../../../assets/lluvia.mp4';
 
 const LobbyLayout = ({ children }) => {
-  const [isMuted, setIsMuted] = useState(false); // Default to sound ON (autoplaying) -> Change to true if want silent start
+  const [isMuted, setIsMuted] = useState(true); // Start with sound OFF
   const audioRef = useRef(null);
 
   const toggleMute = () => {
@@ -54,7 +55,18 @@ const LobbyLayout = ({ children }) => {
   return (
     <div className={styles.lobbyContainer}>
         <div className={styles.ambientParticles} />
-        <RainEffect intensity={80} />
+        {/* <RainEffect intensity={80} /> */}
+
+         {/* Video de lluvia en bucle */}
+        <video 
+            className={styles.rainVideo}
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+        >
+        <source src={rainVideo} type="video/mp4" />
+      </video>
         
         {/* Ambient Sound Controller */}
         <button 
