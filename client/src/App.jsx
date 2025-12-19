@@ -11,7 +11,7 @@ import InventoryLayout from '@features/showcase/layouts/InventoryLayout';
 import ProjectGrid from '@features/showcase/components/ProjectGrid';
 import { useProjects } from '@features/showcase/hooks/useProjects';
 
-import SaveRoomLayout from '@features/contact/layouts/SaveRoomLayout';
+import ContactLayout from '@features/contact/layouts/ContactLayout';
 import ContactForm from '@features/contact/components/ContactForm';
 
 // Individual Page Components (Wrapper logic)
@@ -39,9 +39,9 @@ const ProjectsPage = () => {
 
 const ContactPage = () => {
     return (
-      <SaveRoomLayout>
+      <ContactLayout>
           <ContactForm />
-      </SaveRoomLayout>
+      </ContactLayout>
     );
 };
 

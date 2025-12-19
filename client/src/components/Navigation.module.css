@@ -252,7 +252,7 @@
 @media (max-width: 768px) {
   .staticBoard {
     position: fixed;
-    left: 0;
+    left: -18px;
     right: 0;
     top: -100%;
     /* Hidden off-screen above */

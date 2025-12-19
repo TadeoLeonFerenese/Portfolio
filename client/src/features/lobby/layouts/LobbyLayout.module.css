@@ -126,6 +126,7 @@
 /* Mobile (< 768px) */
 @media (max-width: 768px) {
     .lobbyContainer {
+        background-image: url('../../../assets/warcraftRES.png');
         background-size: cover;
         background-position: center center;
         /* Mejor centrado */

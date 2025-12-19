@@ -58,12 +58,24 @@
     .header {
         display: flex;
     }
+
+    .logo {
+        height: 80px;
+    }
+
+    .header.logoOnly .logo {
+        height: 80px;
+    }
 }
 
 /* Extra small screens */
 @media (max-width: 480px) {
     .logo {
-        height: 50px;
+        height: 80px;
+    }
+
+    .header.logoOnly .logo {
+        height: 80px;
     }
 
     .headerTitle {
