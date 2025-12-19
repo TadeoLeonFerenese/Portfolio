@@ -15,7 +15,8 @@ const ContactForm = () => {
     const textarea = textareaRef.current;
     if (textarea) {
       textarea.style.height = 'auto';
-      textarea.style.height = `${textarea.scrollHeight}px`;
+      const newHeight = Math.min(textarea.scrollHeight, 180); // Limit to 180px max
+      textarea.style.height = `${newHeight}px`;
     }
   }, [formData.message]);
 

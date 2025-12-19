@@ -8,7 +8,10 @@
   background-position: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  /* Cambiado de center a flex-start para subir el form */
+  padding-top: 5rem;
+  /* Padding superior para controlar posición */
   position: relative;
   overflow: hidden;
 }
