@@ -14,6 +14,9 @@ import { useProjects } from '@features/showcase/hooks/useProjects';
 import ContactLayout from '@features/contact/layouts/ContactLayout';
 import ContactForm from '@features/contact/components/ContactForm';
 
+import ProfileLayout from '@features/profile/layouts/ProfileLayout';
+import Origin from '@features/profile/components/Origin';
+
 // Individual Page Components (Wrapper logic)
 
 const DashboardPage = () => {
@@ -45,6 +48,14 @@ const ContactPage = () => {
     );
 };
 
+const ProfilePage = () => {
+    return (
+      <ProfileLayout>
+          <Origin />
+      </ProfileLayout>
+    );
+};
+
 function App() {
   return (
     <Router>
@@ -54,6 +65,7 @@ function App() {
         <main style={{ flex: 1 }}>
           <Routes>
             <Route path="/" element={<DashboardPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>

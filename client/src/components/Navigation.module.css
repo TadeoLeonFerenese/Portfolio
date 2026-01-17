@@ -29,8 +29,8 @@
 
   /* Dimensions for the board */
   width: 350px;
-  height: 600px;
-  /* Adjusted height for better proportion */
+  height: 700px;
+  /* Increased height to fit 4 buttons */
   max-height: 90vh;
   /* Safety cap for small screens */
 
@@ -39,14 +39,14 @@
   box-shadow: none;
 
   /* Padding to ensure content stays inside the Iron Frame */
-  /* Reduced padding to give Logo more space */
-  padding: 3rem 1.5rem 3.5rem 1.5rem;
+  /* Adjusted padding for 4 buttons */
+  padding: 2.5rem 1.5rem 3rem 1.5rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  /* Slightly tighter gap */
+  gap: 0.5rem;
+  /* Tighter gap for 4 buttons */
 
   z-index: 100;
   /* Standard z-index */
@@ -135,20 +135,23 @@
   align-items: center;
   /* Dimensions */
   width: 90%;
-  height: 7.5rem;
+  height: 6.5rem;
+  /* Reduced to fit 4 buttons */
   padding: 0;
-  margin: -1rem 0;
+  margin: -0.5rem 0;
+  /* Less negative margin */
 
   /* Text Style - Smaller */
   text-decoration: none;
   font-family: 'warcraftFont';
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 1.2rem;
-  /* Reduced font size */
+  font-size: 1.1rem;
+  /* Slightly smaller font */
   color: #ffcc00;
   /* Warcraft Gold */
-  letter-spacing: 4px;
+  letter-spacing: 3px;
+  /* Tighter spacing */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
 
   /* Button Visuals - Image Mask */

@@ -51,6 +51,9 @@ const Navigation = () => {
             <Link to="/" className={`${styles.menuBtn} ${location.pathname === '/' ? styles.active : ''}`}>
                 Dashboard
             </Link>
+            <Link to="/profile" className={`${styles.menuBtn} ${location.pathname === '/profile' ? styles.active : ''}`}>
+                Profile
+            </Link>
             <Link to="/projects" className={`${styles.menuBtn} ${location.pathname === '/projects' ? styles.active : ''}`}>
                 Inventory
             </Link>
