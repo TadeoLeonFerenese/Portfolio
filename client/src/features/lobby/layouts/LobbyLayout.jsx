@@ -74,7 +74,9 @@ const LobbyLayout = ({ children }) => {
             onClick={toggleMute}
             aria-label={isMuted ? "Unmute Ambient" : "Mute Ambient"}
         >
-            {isMuted ? "🔇" : "🔊"}
+            <span className={styles.soundIcon} aria-hidden="true">
+              {isMuted ? "🔇" : "🔊"}
+            </span>
         </button>
 
         <audio ref={audioRef} autoPlay loop hidden>
