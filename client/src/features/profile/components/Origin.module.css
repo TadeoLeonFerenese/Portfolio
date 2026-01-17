@@ -1,674 +1,439 @@
-@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap');
 
-@font-face {
-    font-family: 'Warcraft';
-    src: url('../../../assets/fonts/warcraftFont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* Main Container */
-.originContainer {
+/* === VARIABLES & GLOBAL LAYOUT === */
+.originPage {
     min-height: 100vh;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1410 50%, #0a0a0a 100%);
+    background-color: #0b0b0b;
+    color: #e0e0e0;
+    font-family: 'Manrope', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem 2rem;
-    padding-left: 370px;
-    /* Space for Sidebar (350px) + Gap (20px) */
+    padding: 2rem 4rem;
+    padding-left: 380px;
+    overflow-x: hidden;
     position: relative;
-    overflow: hidden;
 }
 
-/* Animated background effect */
-.originContainer::before {
-    content: '';
+/* Warcraft 3 Human UI Style Background */
+.originPage::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(139, 69, 19, 0.03) 0%, transparent 50%);
-    animation: shimmer 8s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes shimmer {
-
-    0%,
-    100% {
-        opacity: 0.5;
-    }
-
-    50% {
-        opacity: 0.8;
-    }
-}
-
-/* Character Sheet Container */
-.characterSheet {
-    max-width: 1150px;
-    /* Balanced width */
     width: 100%;
-    background: linear-gradient(135deg, rgba(30, 20, 10, 0.95), rgba(20, 15, 10, 0.98));
-    border: 3px solid #4a3520;
-    border-radius: 12px;
-    box-shadow:
-        0 0 30px rgba(212, 175, 55, 0.2),
-        inset 0 0 50px rgba(0, 0, 0, 0.5),
-        0 10px 40px rgba(0, 0, 0, 0.8);
-    display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    /* Balanced padding */
-    position: relative;
-    overflow: hidden;
-}
-
-/* Stone texture border effect */
-.characterSheet::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 8px solid transparent;
-    border-image: linear-gradient(135deg,
-            #8b6914,
-            #d4af37,
-            #8b6914,
-            #5d4a1f) 1;
-    border-radius: 12px;
+    height: 100%;
+    background-image: radial-gradient(circle at center, rgba(11, 11, 11, 0.3) 0%, rgba(11, 11, 11, 0.9) 100%), url('../../../assets/dark-fantasy-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     pointer-events: none;
+    z-index: 0;
 }
 
-/* Left Panel - Profile & Stats */
-.leftPanel {
+.mainContainer {
+    width: 100%;
+    max-width: 950px;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    /* Compact spacing */
-    border-right: 2px solid rgba(139, 105, 20, 0.3);
-    padding-right: 2rem;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+
+    /* Inset Panel Look */
+    background: linear-gradient(135deg, rgba(40, 45, 55, 0.4) 0%, rgba(30, 35, 45, 0.5) 100%);
+    border: 1px solid rgba(201, 162, 77, 0.15);
+    border-radius: 4px;
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.4),
+        inset 0 -1px 3px rgba(255, 255, 255, 0.02),
+        0 4px 12px rgba(0, 0, 0, 0.3);
+
+    /* Subtle parchment/metal texture */
+    background-image:
+        linear-gradient(135deg, rgba(40, 45, 55, 0.4) 0%, rgba(30, 35, 45, 0.5) 100%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
-/* Character Header */
-.characterHeader {
-    background: linear-gradient(135deg, rgba(40, 30, 15, 0.8), rgba(25, 20, 10, 0.9));
-    border: 2px solid #5d4a1f;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+/* === PANEL TITLE === */
+.panelTitle {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(201, 162, 77, 0.2);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
 }
 
-.characterName {
-    font-family: 'Warcraft', serif;
-    font-size: 2.2rem;
-    /* Increased for Warcraft font */
-    letter-spacing: 2px;
-    /* Spaced out letters */
-    color: #d4af37;
-    text-shadow:
-        2px 2px 4px rgba(0, 0, 0, 0.8),
-        0 0 10px rgba(212, 175, 55, 0.3);
-    margin: 0 0 0.8rem 0;
-    text-align: center;
-    line-height: 1.3;
+.panelHeading {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #e0e0e0;
+    margin: 0 0 0.3rem 0;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
-.characterClass {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
-    margin-bottom: 0.7rem;
-}
-
-.level {
-    font-family: 'Uncial Antiqua', serif;
-    font-size: 0.95rem;
-    color: #ffcc00;
-    text-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
-}
-
-.className {
-    font-family: 'Uncial Antiqua', serif;
-    font-size: 1.1rem;
-    color: #a335ee;
-    text-shadow: 0 0 10px rgba(163, 53, 238, 0.5);
-    font-weight: bold;
-}
-
-.spec {
-    font-size: 0.9rem;
-    color: #aaa;
-    font-style: italic;
-}
-
-.guild {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
-    margin-bottom: 0.5rem;
-    padding: 0.8rem;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 6px;
-}
-
-.guildLabel {
+.panelSubtitle {
     font-size: 0.85rem;
     color: #888;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
-.guildName {
-    font-family: 'Uncial Antiqua', serif;
-    font-size: 1rem;
-    color: #4a9eff;
-    text-shadow: 0 0 8px rgba(74, 158, 255, 0.5);
+/* === LAYER 1: DOMAIN GRID === */
+.domainGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(201, 162, 77, 0.1);
 }
 
-.location {
+.domainCard {
+    background: rgba(30, 35, 45, 0.5);
+    border: none;
+    padding: 1.5rem 2rem;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 0.5rem;
-    color: #bbb;
-    font-size: 0.9rem;
-}
-
-.locationIcon {
-    font-size: 1rem;
-}
-
-/* Stats Container */
-.statsContainer {
-    background: linear-gradient(135deg, rgba(40, 30, 15, 0.6), rgba(25, 20, 10, 0.8));
-    border: 2px solid #5d4a1f;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-}
-
-.sectionTitle {
-    font-family: 'Warcraft', serif;
-    font-size: 1.4rem;
-    letter-spacing: 3px;
-    color: #d4af37;
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
-    margin: 0 0 0.8rem 0;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.statRow {
-    margin-bottom: 0.7rem;
-}
-
-.statInfo {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
-
-.statName {
-    font-family: 'Uncial Antiqua', serif;
-    font-size: 1rem;
-    color: #ffcc00;
-    font-weight: bold;
-    text-shadow: 0 0 6px rgba(255, 204, 0, 0.4);
-}
-
-.statDesc {
-    font-family: 'Warcraft', serif;
-    font-size: 1rem;
-    color: #aaa;
-    letter-spacing: 1px;
-}
-
-.statBarContainer {
-    position: relative;
-    height: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid #5d4a1f;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-.statBar {
-    height: 100%;
-    border-radius: 3px;
-    box-shadow:
-        inset 0 2px 4px rgba(255, 255, 255, 0.2),
-        0 0 8px currentColor;
-    transition: width 0.5s ease;
-}
-
-.statValue {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Uncial Antiqua', serif;
-    font-size: 0.9rem;
-    color: #fff;
-    font-weight: bold;
-    text-shadow:
-        1px 1px 2px rgba(0, 0, 0, 0.9),
-        0 0 4px rgba(0, 0, 0, 0.8);
-}
-
-/* Right Panel - Tabs */
-.rightPanel {
-    display: flex;
-    flex-direction: column;
     gap: 1rem;
-}
-
-/* Tab Navigation */
-.tabNavigation {
-    display: flex;
-    gap: 0.8rem;
-    border-bottom: 2px solid rgba(139, 105, 20, 0.4);
-    padding-bottom: 0.5rem;
-}
-
-.tabButton {
-    font-family: 'Warcraft', serif;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    padding: 0.8rem 1.8rem;
-    background: linear-gradient(135deg, rgba(40, 30, 15, 0.7), rgba(25, 20, 10, 0.8));
-    border: 2px solid #5d4a1f;
-    border-radius: 6px;
-    color: #aaa;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    text-align: left;
 }
 
-.tabButton:hover {
-    background: linear-gradient(135deg, rgba(60, 45, 20, 0.9), rgba(40, 30, 15, 0.95));
-    border-color: #8b6914;
-    color: #d4af37;
-    transform: translateY(-2px);
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.6),
-        0 0 12px rgba(212, 175, 55, 0.2);
+.domainCard:hover {
+    background: rgba(40, 50, 60, 0.6);
+    transform: translateX(4px);
 }
 
-.tabButton.active {
-    background: linear-gradient(135deg, #5d4a1f, #4a3520);
-    border-color: #d4af37;
-    color: #ffcc00;
-    box-shadow:
-        0 0 15px rgba(212, 175, 55, 0.4),
-        inset 0 2px 8px rgba(0, 0, 0, 0.5);
-    text-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
-}
-
-/* Tab Content */
-.tabContent {
-    flex: 1;
-    background: linear-gradient(135deg, rgba(40, 30, 15, 0.5), rgba(25, 20, 10, 0.7));
-    border: 2px solid #5d4a1f;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.6),
-        inset 0 0 20px rgba(0, 0, 0, 0.3);
-    /* NO max-height to avoid ugly internal scroll */
-    overflow-y: visible;
-}
-
-.contentTitle {
-    font-family: 'Warcraft', serif;
-    font-size: 1.8rem;
-    letter-spacing: 3px;
-    color: #d4af37;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-    margin: 0 0 1.2rem 0;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* Gear Content */
-.gearContent {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    /* Compact spacing between items */
-}
-
-.gearItem {
-    background: linear-gradient(135deg, rgba(30, 25, 15, 0.8), rgba(20, 15, 10, 0.9));
-    border: 2px solid #5d4a1f;
-    border-radius: 8px;
-    padding: 1rem;
-    /* Compact padding */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-}
-
-.gearItem:hover {
-    transform: translateX(5px);
-    border-color: #8b6914;
-    box-shadow:
-        0 6px 16px rgba(0, 0, 0, 0.7),
-        0 0 20px rgba(212, 175, 55, 0.15);
-}
-
-.itemName {
-    font-family: 'Uncial Antiqua', serif;
-    font-size: 1.3rem;
-    margin: 0 0 0.8rem 0;
-    text-shadow: 0 0 10px currentColor;
-}
-
-.itemPosition {
-    font-size: 1rem;
-    color: #fff;
-    font-weight: bold;
-    margin-bottom: 0.4rem;
-}
-
-.itemCompany {
-    font-size: 0.95rem;
-    color: #4a9eff;
-    margin-bottom: 0.3rem;
-}
-
-.itemPeriod {
-    font-size: 0.85rem;
-    color: #ffcc00;
-    margin-bottom: 0.8rem;
-    font-style: italic;
-}
-
-.itemTooltip {
-    font-size: 0.9rem;
-    color: #bbb;
-    padding: 0.8rem;
-    background: rgba(0, 0, 0, 0.4);
-    border-left: 3px solid #8b6914;
-    border-radius: 4px;
-    line-height: 1.5;
-}
-
-/* Talents Content */
-.talentsContent {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.talentCategory {
-    background: linear-gradient(135deg, rgba(30, 25, 15, 0.6), rgba(20, 15, 10, 0.8));
-    border: 2px solid #5d4a1f;
-    border-radius: 8px;
-    padding: 1.3rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-.categoryName {
-    font-family: 'Warcraft', serif;
-    font-size: 1.6rem;
-    color: #ffcc00;
-    text-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
-    margin: 0 0 1rem 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.skillTags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-}
-
-.skillTag {
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, rgba(74, 158, 255, 0.2), rgba(74, 158, 255, 0.1));
-    border: 1px solid #4a9eff;
-    border-radius: 6px;
-    color: #4a9eff;
-    text-shadow: 0 0 6px rgba(74, 158, 255, 0.5);
-    box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.4),
-        inset 0 1px 3px rgba(74, 158, 255, 0.2);
-    transition: all 0.3s ease;
-}
-
-.skillTag:hover {
-    background: linear-gradient(135deg, rgba(74, 158, 255, 0.3), rgba(74, 158, 255, 0.2));
-    border-color: #6bb3ff;
-    transform: translateY(-2px);
-    box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.6),
-        0 0 12px rgba(74, 158, 255, 0.4);
-}
-
-/* Quests Content */
-.questsContent {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.questItem {
-    background: linear-gradient(135deg, rgba(30, 25, 15, 0.7), rgba(20, 15, 10, 0.85));
-    border: 2px solid #5d4a1f;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-}
-
-.questItem:hover {
-    transform: translateX(5px);
-    border-color: #8b6914;
-    box-shadow:
-        0 6px 16px rgba(0, 0, 0, 0.7),
-        0 0 20px rgba(212, 175, 55, 0.15);
-}
-
-.questHeader {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.8rem;
-}
-
-.questStatus {
-    font-size: 1.5rem;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
+.domainIcon {
+    font-size: 2rem;
+    opacity: 0.8;
     flex-shrink: 0;
 }
 
-.questStatus.completed {
-    background: linear-gradient(135deg, #50c878, #3a9b5c);
-    color: #fff;
-    box-shadow: 0 0 12px rgba(80, 200, 120, 0.5);
+.domainContent {
+    flex: 1;
 }
 
-.questStatus.in-progress {
-    background: linear-gradient(135deg, #ffcc00, #e6b800);
-    color: #000;
-    box-shadow: 0 0 12px rgba(255, 204, 0, 0.5);
-    animation: rotate 2s linear infinite;
+.domainName {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #e0e0e0;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 0.05em;
 }
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.questName {
-    font-family: 'Uncial Antiqua', serif;
-    font-size: 1.2rem;
-    color: #d4af37;
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+.domainSummary {
+    font-size: 0.85rem;
+    color: #999;
+    line-height: 1.4;
     margin: 0;
 }
 
-.questInstitution {
+.domainArrow {
+    font-size: 0.8rem;
+    color: #c9a24d;
+    opacity: 0.6;
+    transition: transform 0.3s ease;
+}
+
+.domainCard:hover .domainArrow {
+    transform: translateX(4px);
+    opacity: 1;
+}
+
+/* Quest Log Button */
+.questLogBtn {
+    margin: 1.5rem 2rem;
+    padding: 1rem 2rem;
+    background: rgba(201, 162, 77, 0.1);
+    border: 1px solid rgba(201, 162, 77, 0.3);
+    color: #c9a24d;
+    font-family: 'Cinzel', serif;
     font-size: 0.95rem;
-    color: #4a9eff;
-    margin-bottom: 0.3rem;
-    padding-left: 3rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 2px;
 }
 
-.questYear {
+.questLogBtn:hover {
+    background: rgba(201, 162, 77, 0.2);
+    border-color: #c9a24d;
+}
+
+/* === LAYER 2: DETAIL MODAL === */
+.detailOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.detailPanel {
+    width: 90%;
+    max-width: 700px;
+    max-height: 85vh;
+    background: linear-gradient(135deg, rgba(40, 45, 55, 0.95) 0%, rgba(30, 35, 45, 0.95) 100%);
+    border: 1px solid rgba(201, 162, 77, 0.3);
+    border-radius: 4px;
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.detailHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(201, 162, 77, 0.2);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+}
+
+.detailTitle {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #e0e0e0;
+    margin: 0;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    color: #c9a24d;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.closeBtn:hover {
+    color: #fff;
+}
+
+.detailContent {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.detailSkill {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detailSkill:last-child {
+    border-bottom: none;
+}
+
+.detailSkillHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+}
+
+.detailTech {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+.detailLevel {
+    font-size: 0.75rem;
+    color: #c9a24d;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+.detailContext {
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.detailQuestBtn {
+    margin: 1rem 2rem 1.5rem 2rem;
+    padding: 0.9rem 1.5rem;
+    background: rgba(201, 162, 77, 0.1);
+    border: 1px solid rgba(201, 162, 77, 0.3);
+    color: #c9a24d;
+    font-family: 'Cinzel', serif;
     font-size: 0.85rem;
-    color: #ffcc00;
-    font-style: italic;
-    padding-left: 3rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    width: calc(100% - 4rem);
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .originContainer {
+.detailQuestBtn:hover {
+    background: rgba(201, 162, 77, 0.2);
+    border-color: #c9a24d;
+}
+
+/* === LAYER 3: QUEST LOG === */
+.questlogOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+}
+
+.questlogPanel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 90%;
+    max-width: 800px;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(40, 45, 55, 0.98) 0%, rgba(30, 35, 45, 0.98) 100%);
+    border-left: 1px solid rgba(201, 162, 77, 0.3);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+}
+
+.questlogHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    border-bottom: 1px solid rgba(201, 162, 77, 0.2);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+}
+
+.questlogTitle {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #e0e0e0;
+    margin: 0;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.questlogContent {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.questlogSection {
+    margin-bottom: 3rem;
+}
+
+.sectionTitle {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #c9a24d;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(201, 162, 77, 0.2);
+}
+
+.logEntry {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logEntry:last-child {
+    border-bottom: none;
+}
+
+.logHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logRole {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+.logCompany {
+    font-family: 'Cinzel', serif;
+    color: #c9a24d;
+    font-size: 0.95rem;
+}
+
+.logPeriod {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.logDetails {
+    font-size: 1rem;
+    color: #aaa;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+    .originPage {
+        padding: 4rem 2rem;
         padding-left: 2rem;
-        /* Remove sidebar padding on tablet/mobile */
+        align-items: flex-start;
     }
 
-    .characterSheet {
+    .domainGrid {
         grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .leftPanel {
-        border-right: none;
-        border-bottom: 2px solid rgba(139, 105, 20, 0.3);
-        padding-right: 0;
-        padding-bottom: 2rem;
     }
 }
 
 @media (max-width: 768px) {
-    .originContainer {
-        padding: 5rem 1rem 2rem 1rem;
-        /* Top padding to clear burger button */
-        align-items: flex-start;
-        /* Allow scrolling from top */
-        height: auto;
-        /* Allow container to grow */
-        overflow-y: auto;
-        /* Enable page scroll */
+    .originPage {
+        padding: 2rem 1rem;
+        padding-top: 6rem;
     }
 
-    .characterSheet {
-        padding: 1.2rem;
-        border-width: 2px;
-        /* Thinner border */
+    .questlogPanel {
+        width: 100%;
+        max-width: 100%;
     }
 
-    .characterHeader {
-        margin-top: 1rem;
-    }
-
-    .characterName {
-        font-size: 1.4rem;
-    }
-
-    .tabNavigation {
-        flex-wrap: wrap;
-        justify-content: center;
-        /* Center tabs on mobile */
-    }
-
-    .tabButton {
-        font-size: 0.9rem;
-        padding: 0.6rem 1.2rem;
-        flex: 1 1 auto;
-        /* Allow buttons to grow/shrink nicely */
-        text-align: center;
-    }
-
-    .tabContent {
-        padding: 1.2rem;
-        min-height: auto;
-        /* Remove fixed height constraints */
-    }
-
-    .statInfo {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.2rem;
-    }
-
-    .statValue {
-        position: relative;
-        right: auto;
-        top: auto;
-        transform: none;
-        align-self: flex-end;
-        margin-top: -1.2rem;
-        /* Visual trick to keep aligned with bar if needed, or just let it flow */
-    }
-}
-
-@media (max-width: 480px) {
-    .originContainer {
-        padding: 4.5rem 0.8rem 1.5rem 0.8rem;
-    }
-
-    .characterSheet {
-        padding: 1rem;
-        gap: 1.5rem;
-    }
-
-    .characterName {
-        font-size: 1.2rem;
-    }
-
-    .className {
-        font-size: 1rem;
-    }
-
-    .tabButton {
-        font-size: 0.8rem;
-        padding: 0.5rem 0.8rem;
-    }
-
-    .contentTitle {
-        font-size: 1.1rem;
-    }
-
-    .itemName,
-    .questName {
-        font-size: 1.1rem;
-    }
-
-    .questHeader {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .questInstitution,
-    .questYear {
-        padding-left: 0;
-        /* Align left on very small screens */
+    .detailPanel {
+        width: 95%;
     }
 }

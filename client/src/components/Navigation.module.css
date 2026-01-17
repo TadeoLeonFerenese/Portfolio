@@ -400,3 +400,86 @@
     }
   }
 }
+
+/* === PROFILE PAGE OVERRIDE (Professional Dark Fantasy) === */
+/* Active ONLY when .profileMode is present in the nav */
+
+.profileMode.staticBoard {
+  left: 20px;
+  width: 300px;
+  /* More minimal as requested */
+  height: auto;
+  min-height: 500px;
+  max-height: 80vh;
+
+  /* Palette: Dark Neutral #0e0e0e */
+  background: #0e0e0e;
+  border: 1px solid rgba(201, 162, 77, 0.2);
+  /* Muted Gold #c9a24d */
+  border-radius: 4px;
+  padding: 2rem 1rem;
+
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  background-image: none;
+  /* Override wooden texture */
+  animation: slideDown 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Remove chains and wooden background for profile */
+.profileMode.staticBoard::before {
+  content: none;
+}
+
+.profileMode.staticBoard::after {
+  content: none;
+}
+
+/* Profile Mode Board Header Override */
+.profileMode .boardHeader {
+  margin-bottom: 2rem;
+}
+
+/* Profile Mode Buttons - Minimal & Professional */
+.profileMode .menuBtn {
+  height: 3.5rem;
+  margin: 0.5rem 0;
+  background-image: none;
+  /* Remove button texture */
+
+  /* Typography: Cinzel for elegance */
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  color: #888;
+
+  /* Minimalist: Transparent, no border */
+  background: transparent;
+  border: 1px solid transparent;
+
+  box-shadow: none;
+  filter: none;
+  justify-content: center;
+}
+
+.profileMode .menuBtn:hover {
+  color: #c9a24d;
+  /* Muted Gold */
+  background: rgba(201, 162, 77, 0.05);
+  border: 1px solid rgba(201, 162, 77, 0.2);
+  width: 90%;
+  transform: none;
+  /* No scaling */
+  text-shadow: 0 0 8px rgba(201, 162, 77, 0.4);
+}
+
+.profileMode .menuBtn.active {
+  color: #c9a24d;
+  background: rgba(201, 162, 77, 0.1);
+  border: 1px solid rgba(201, 162, 77, 0.3);
+  opacity: 1;
+  pointer-events: none;
+  filter: none;
+}

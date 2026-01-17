@@ -3,9 +3,11 @@ import styles from './ProfileLayout.module.css';
 const ProfileLayout = ({ children }) => {
   return (
     <div className={styles.profileContainer}>
-       <div className={styles.backgroundEffect} />
+       <div className={styles.overlay} />
        <div className={styles.contentFrame}>
-           {children}
+           <div className={styles.characterSheetGrid}>
+               {children}
+           </div>
        </div>
     </div>
   );
