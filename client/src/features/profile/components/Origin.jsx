@@ -9,17 +9,35 @@ import ScrollsOfWisdom from "./ScrollsOfWisdom";
 const Origin = () => {
   return (
     <>
-      {/* Left Column: Character Stats, Bio & Education */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      {/* Full-width Character Sheet Navbar */}
+      <div style={{ width: "100%", marginBottom: "1rem" }}>
         <CharacterSheet />
-        <ScrollsOfWisdom />
       </div>
 
-      {/* Right Column: Quests (Experience) & Talents (Skills) */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      {/* Full-width Quest Log */}
+      <div style={{ width: "100%", marginBottom: "1rem" }}>
         <ExperienceLog />
+      </div>
+
+      {/* Two-column grid: Education and Skills side by side */}
+      <div style={{ 
+        display: "grid", 
+        gridTemplateColumns: "repeat(2, 1fr)", 
+        gap: "1rem", 
+        width: "100%" 
+      }}
+      className="responsiveGrid">
+        <ScrollsOfWisdom />
         <TalentTree />
       </div>
+
+      <style jsx>{`
+        @media (max-width: 1024px) {
+          .responsiveGrid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </>
   );
 };

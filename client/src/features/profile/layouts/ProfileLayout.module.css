@@ -8,12 +8,16 @@
   background-image: url("../../../assets/warcraftBG.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed; /* Parallax feel */
+  background-attachment: fixed;
+  /* Parallax feel */
   background-position: center;
-  overflow-y: auto; /* Permitir scroll si el contenido es largo */
+  overflow-y: auto;
+  /* Permitir scroll si el contenido es largo */
   overflow-x: hidden;
-  color: #f0e6d2; /* Color pergamino claro por defecto */
-  font-family: "Friz Quadrata", serif; /* Fallback */
+  color: #f0e6d2;
+  /* Color pergamino claro por defecto */
+  font-family: "Friz Quadrata", serif;
+  /* Fallback */
 
   /* Cursor personalizado global para esta vista */
   cursor: url("../../../assets/cursores/gam376.cur"), auto;
@@ -29,7 +33,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Oscurecer fondo para legibilidad */
+  background: rgba(0, 0, 0, 0.7);
+  /* Oscurecer fondo para legibilidad */
   z-index: 0;
   pointer-events: none;
 }
@@ -38,20 +43,22 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1600px; /* Aumentado para aprovechar el espacio restante */
-  margin: 0 auto; /* Centrado en el espacio restante */
+  max-width: 1600px;
+  /* Aumentado para aprovechar el espacio restante */
+  margin: 0 auto;
+  /* Centrado en el espacio restante */
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-/* Contenedor tipo "Hoja de Personaje" - Dos columnas principales en Desktop */
+/* Contenedor tipo "Hoja de Personaje" - Single column layout */
 .characterSheetGrid {
-  display: grid;
-  grid-template-columns: 350px 1fr; /* Sidebar izquierda (Avatar/Stats) + Main Content */
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* --- RESPONSIVE ADJUSTMENTS --- */
@@ -63,9 +70,7 @@
     padding-left: 420px;
   }
 
-  .characterSheetGrid {
-    grid-template-columns: 1fr; /* Stack en tablets/laptops pequeñas para evitar squeeze */
-  }
+
 }
 
 /* Tablet Range: 768px to 1024px */
@@ -76,14 +81,11 @@
     padding-left: 360px;
   }
 
-  .characterSheetGrid {
-    /* El espacio restante es poco, stackeamos todo */
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
+
 
   .contentFrame {
-    padding: 1.5rem; /* Reducir padding interno para ganar espacio */
+    padding: 1.5rem;
+    /* Reducir padding interno para ganar espacio */
   }
 }
 
@@ -91,8 +93,10 @@
 /* El menú desaparece de la izquierda y se vuelve hamburguesa/overlay */
 @media (max-width: 768px) {
   .profileContainer {
-    padding-left: 0; /* Recuperar todo el ancho */
-    padding-top: 120px; /* Aumentado para mayor espacio visual en móvil */
+    padding-left: 0;
+    /* Recuperar todo el ancho */
+    padding-top: 120px;
+    /* Aumentado para mayor espacio visual en móvil */
   }
 
   .contentFrame {
@@ -101,7 +105,6 @@
   }
 
   .characterSheetGrid {
-    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 }

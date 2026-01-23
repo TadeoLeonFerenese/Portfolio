@@ -8,77 +8,86 @@ const CharacterSheet = () => {
   const statConfig = [
     {
       key: "str",
-      label: "Strength (Backend)",
+      label: "STR",
+      description: "Backend",
       color: "#8b0000",
       value: stats.str,
-    }, // Rojo Level Badge
+    },
     {
       key: "int",
-      label: "Intellect (Logic)",
+      label: "INT",
+      description: "Logic",
       color: "#0070DE",
       value: stats.int,
-    }, // Azul Mago
+    },
     {
       key: "dex",
-      label: "Agility (Frontend)",
+      label: "AGI",
+      description: "Frontend",
       color: "#4CAF50",
       value: stats.dex,
-    }, // Verde Menos Chillón (Material Green 500)
+    },
     {
       key: "vit",
-      label: "Stamina (Resilience)",
+      label: "STA",
+      description: "Resilience",
       color: "#FF9900",
       value: stats.vit,
-    }, // Naranja/Dorado
+    },
   ];
 
   return (
     <div className={styles.sheetContainer}>
-      {/* Avatar Section */}
-      <div className={styles.avatarFrame}>
-        <img
-          src={hero.avatarUrl}
-          alt={pii.name}
-          className={styles.avatarImage}
-        />
-      </div>
-
-      {/* Basic Info */}
-      <div className={styles.infoBlock}>
-        <h1 className={styles.titleMain}>{hero.class}</h1>
-        <h2 className={styles.titleSub}>{hero.specialization}</h2>
-        <div className={styles.levelBadge}>Level {hero.level}</div>
-      </div>
-
-      <div className={styles.separator} />
-
-      {/* Base Stats */}
-      <div className={styles.statsGrid}>
-        {statConfig.map((stat) => (
-          <div key={stat.key} className={styles.statRow}>
-            <div className={styles.statHeader}>
-              <span className={styles.statLabel} style={{ color: stat.color }}>
-                {stat.label}
-              </span>
-              <span className={styles.statValue}>{stat.value}</span>
-            </div>
-            <div className={styles.progressBarContainer}>
-              <div
-                className={styles.progressBarFill}
-                style={{
-                  width: `${stat.value}%`,
-                  backgroundColor: stat.color,
-                  boxShadow: `0 0 10px ${stat.color}`,
-                }}
-              />
-            </div>
+      <h2 className={styles.sectionTitle}>Character Profile</h2>
+      
+      {/* Top row: Avatar/Info on left, Stats on right */}
+      <div className={styles.topRow}>
+        {/* Left side: Avatar + Info */}
+        <div className={styles.leftSection}>
+          <div className={styles.avatarFrame}>
+            <img
+              src={hero.avatarUrl}
+              alt={pii.name}
+              className={styles.avatarImage}
+            />
           </div>
-        ))}
+
+          <div className={styles.infoBlock}>
+            <h1 className={styles.titleMain}>{hero.class}</h1>
+            <h2 className={styles.titleSub}>{hero.specialization}</h2>
+            <div className={styles.levelBadge}>Level {hero.level}</div>
+          </div>
+        </div>
+
+        {/* Right side: Stats */}
+        <div className={styles.statsGrid}>
+          {statConfig.map((stat) => (
+            <div key={stat.key} className={styles.statRow}>
+              <div className={styles.statHeader}>
+                <div className={styles.statLabelGroup}>
+                  <span className={styles.statLabel} style={{ color: stat.color }}>
+                    {stat.label}
+                  </span>
+                  <span className={styles.statDescription}>{stat.description}</span>
+                </div>
+                <span className={styles.statValue}>{stat.value}</span>
+              </div>
+              <div className={styles.progressBarContainer}>
+                <div
+                  className={styles.progressBarFill}
+                  style={{
+                    width: `${stat.value}%`,
+                    backgroundColor: stat.color,
+                    boxShadow: `0 0 10px ${stat.color}`,
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className={styles.separator} />
-
-      {/* Contact Mini-List */}
+      {/* Bottom row: Contact Info */}
       <div className={styles.contactBlock}>
         <a href={`mailto:${pii.email}`} className={styles.contactItem}>
           ✉️ {pii.email}

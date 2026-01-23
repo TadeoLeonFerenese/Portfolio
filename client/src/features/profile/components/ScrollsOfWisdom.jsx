@@ -21,12 +21,18 @@ const ScrollsOfWisdom = () => {
 
       {education.map((edu, index) => (
         <div key={index} className={styles.item}>
-          <div className={styles.degreeRow}>
-            {getStatusIcon(edu.status)}
-            <span className={styles.degreeText}>{edu.degree}</span>
+          {getStatusIcon(edu.status)}
+          
+          <div className={styles.itemContent}>
+            <div className={styles.degreeRow}>
+              <span className={styles.degreeText}>{edu.degree}</span>
+            </div>
+            <span className={styles.institution}>{edu.institution}</span>
+            <div className={styles.status}>{edu.status}</div>
+            {edu.details && (
+              <div className={styles.details}>{edu.details}</div>
+            )}
           </div>
-          <div className={styles.institution}>{edu.institution}</div>
-          <div className={styles.status}>{edu.status}</div>
         </div>
       ))}
     </div>
