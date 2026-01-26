@@ -5,6 +5,11 @@
   border-radius: 8px;
   margin-bottom: 0;
   box-shadow: 0 0 20px rgba(80, 80, 90, 0.08), inset 0 0 30px rgba(255, 255, 255, 0.02);
+
+  /* Better text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .sectionTitle {
@@ -61,7 +66,7 @@
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
   /* Professional sans-serif */
 }
 
@@ -69,7 +74,7 @@
   color: #a0a0a0;
   font-size: 0.9rem;
   font-style: italic;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
   /* Professional sans-serif */
 }
 
@@ -78,7 +83,7 @@
   font-size: 0.95rem;
   line-height: 1.6;
   /* Increased line-height for better readability */
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
   /* Professional sans-serif */
 }
 
@@ -95,6 +100,10 @@
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+
   .questItem {
     flex-direction: column;
     /* Stack icon on top or side depending on design pref */
@@ -106,6 +115,18 @@
     /* Stack Title and Date */
     align-items: flex-start;
     gap: 0.2rem;
+  }
+
+  .questTitle {
+    font-size: 1.3rem;
+  }
+
+  .questMeta {
+    font-size: 1rem;
+  }
+
+  .questDesc {
+    font-size: 1.05rem;
   }
 
   .questIcon {

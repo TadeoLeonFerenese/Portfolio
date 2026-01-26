@@ -5,7 +5,7 @@ import styles from './ProjectGrid.module.css';
 const ProjectGrid = ({ projects }) => {
   return (
     <div className={styles.inventoryContainer}>
-      <div className={styles.gridHeader}>Active Quests</div>
+      <div className={styles.gridHeader}>Legendary Artifacts</div>
       <div className={styles.grid}>
         {projects.map(project => (
           <ProjectCard key={project.id} project={project} />

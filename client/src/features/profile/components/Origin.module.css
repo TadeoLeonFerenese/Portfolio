@@ -13,6 +13,11 @@
     padding-left: 380px;
     overflow-x: hidden;
     position: relative;
+
+    /* Better text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 /* Warcraft 3 Human UI Style Background */
@@ -428,6 +433,22 @@
         padding-top: 6rem;
     }
 
+    .panelHeading {
+        font-size: 1.6rem;
+    }
+
+    .panelSubtitle {
+        font-size: 0.95rem;
+    }
+
+    .domainName {
+        font-size: 1.2rem;
+    }
+
+    .domainSummary {
+        font-size: 0.95rem;
+    }
+
     .questlogPanel {
         width: 100%;
         max-width: 100%;
@@ -435,5 +456,33 @@
 
     .detailPanel {
         width: 95%;
+    }
+
+    .detailTech {
+        font-size: 1.15rem;
+    }
+
+    .detailLevel {
+        font-size: 0.85rem;
+    }
+
+    .detailContext {
+        font-size: 1rem;
+    }
+
+    .logRole {
+        font-size: 1.3rem;
+    }
+
+    .logCompany {
+        font-size: 1.05rem;
+    }
+
+    .logPeriod {
+        font-size: 0.9rem;
+    }
+
+    .logDetails {
+        font-size: 1.05rem;
     }
 }

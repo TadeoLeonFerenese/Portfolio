@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap');
+
 .sheetContainer {
   background: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(100, 100, 110, 0.15);
@@ -5,6 +7,11 @@
   border-radius: 8px;
   margin-bottom: 0;
   box-shadow: 0 0 20px rgba(80, 80, 90, 0.08), inset 0 0 30px rgba(255, 255, 255, 0.02);
+
+  /* Better text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .sectionTitle {
@@ -57,18 +64,20 @@
 
 .titleMain {
   color: #e0e0e0;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
+  /* Increased from 1.1rem */
   font-weight: bold;
   margin: 0;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
 .titleSub {
   color: #888;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
+  /* Increased from 0.8rem */
   margin: 0;
   font-style: italic;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
 .levelBadge {
@@ -78,11 +87,12 @@
   border: 1px solid rgba(255, 215, 0, 0.3);
   border-radius: 8px;
   font-weight: bold;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
+  /* Increased from 0.65rem */
   margin-top: 0.2rem;
   display: inline-block;
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
   align-self: flex-start;
 }
 
@@ -100,7 +110,7 @@
   gap: 0.25rem;
   font-size: 0.75rem;
   color: #e0e0e0;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
   min-width: 100px;
 }
 
@@ -118,22 +128,26 @@
 
 .statLabel {
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
+  /* Increased from 0.75rem */
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .statDescription {
-  font-size: 0.65rem;
-  color: #888;
+  font-size: 0.8rem;
+  /* Increased for better readability */
+  color: #aaa;
+  /* Brighter for better contrast */
   font-style: italic;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
 .statValue {
   color: #fff;
   font-weight: bold;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
+  /* Increased from 0.75rem */
 }
 
 .progressBarContainer {
@@ -156,9 +170,10 @@
 .contactBlock {
   display: flex;
   gap: 1.5rem;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
+  /* Increased from 0.75rem */
   color: #e0e0e0;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
   flex-wrap: wrap;
   padding-top: 0.75rem;
   border-top: 1px solid rgba(100, 100, 110, 0.15);
@@ -193,6 +208,25 @@
 }
 
 @media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+
+  .titleMain {
+    font-size: 1.4rem;
+    /* Increased from 1.2rem */
+  }
+
+  .titleSub {
+    font-size: 1rem;
+    /* Increased from 0.9rem */
+  }
+
+  .levelBadge {
+    font-size: 0.8rem;
+    /* Increased from 0.75rem */
+  }
+
   .statsGrid {
     flex-direction: column;
   }
@@ -201,9 +235,26 @@
     width: 100%;
   }
 
+  .statLabel {
+    font-size: 0.85rem;
+  }
+
+  .statDescription {
+    font-size: 0.85rem;
+    /* Increased for mobile readability */
+    color: #bbb;
+    /* Even brighter for mobile */
+  }
+
+  .statValue {
+    font-size: 0.85rem;
+  }
+
   .contactBlock {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+    font-size: 0.9rem;
+    /* Increased from 0.85rem */
   }
 }

@@ -1,16 +1,21 @@
-/* Quest Board Layout - WoW Theme */
+/* Warcraft Projects Layout - Enhanced WoW Theme */
 
 .dungeonContainer {
   min-height: 100vh;
   position: relative;
-  background-image: url("../../../assets/quest_map_bg.png");
+  background-image: url("../../../assets/warcraft_projects_bg.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   padding: 4rem 2rem;
+
+  /* Better text rendering for crisp, clear text */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Mystical fog overlay for atmospheric effect */
+/* Enhanced mystical fog overlay with deeper blue tones */
 .fog {
   position: fixed;
   top: 0;
@@ -18,13 +23,13 @@
   right: 0;
   bottom: 0;
   background: radial-gradient(ellipse at center,
-      rgba(0, 0, 0, 0.1) 0%,
-      rgba(0, 0, 0, 0.4) 100%);
+      rgba(10, 20, 40, 0.2) 0%,
+      rgba(10, 20, 40, 0.6) 100%);
   pointer-events: none;
   z-index: 1;
 }
 
-/* Content frame for quest cards */
+/* Content frame for project cards */
 .contentFrame {
   position: relative;
   z-index: 2;
@@ -48,16 +53,15 @@
     padding-top: 120px;
     /* Space for fixed header (100px) + margin */
     background-attachment: scroll;
-    /* Performance */
+    /* Performance improvement for mobile */
     background-size: cover;
     background-position: center center;
-    /* Mejor centrado */
   }
 
   .fog {
     background: radial-gradient(ellipse at center,
-        rgba(0, 0, 0, 0.3) 0%,
-        /* Más oscuro para mejor contraste */
-        rgba(0, 0, 0, 0.6) 100%);
+        rgba(10, 20, 40, 0.3) 0%,
+        rgba(10, 20, 40, 0.7) 100%);
+    /* Darker for better contrast on mobile */
   }
 }

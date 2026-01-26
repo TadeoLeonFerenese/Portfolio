@@ -16,8 +16,13 @@
   overflow-x: hidden;
   color: #f0e6d2;
   /* Color pergamino claro por defecto */
-  font-family: "Friz Quadrata", serif;
-  /* Fallback */
+  font-family: 'Manrope', sans-serif;
+  /* Standardized font */
+
+  /* Better text rendering for crisp, clear text */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 
   /* Cursor personalizado global para esta vista */
   cursor: url("../../../assets/cursores/gam376.cur"), auto;

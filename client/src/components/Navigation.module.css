@@ -137,22 +137,30 @@
   width: 90%;
   height: 6.5rem;
   /* Reduced to fit 4 buttons */
-  padding: 0;
+  padding: 0.5rem 1rem;
+  /* Added padding for better text spacing */
   margin: -0.5rem 0;
   /* Less negative margin */
 
-  /* Text Style - Smaller */
+  /* Text Style - Optimized for readability */
   text-decoration: none;
   font-family: 'warcraftFont';
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 1.1rem;
-  /* Slightly smaller font */
+  font-size: 1.25rem;
+  /* Increased for better readability */
   color: #ffcc00;
   /* Warcraft Gold */
-  letter-spacing: 3px;
-  /* Tighter spacing */
+  letter-spacing: 1.5px;
+  /* Reduced for better fit */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  line-height: 1.2;
+  /* Better vertical spacing */
+
+  /* Better text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 
   /* Button Visuals - Image Mask */
   background-color: transparent;
@@ -169,7 +177,8 @@
 
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  /* Changed from hidden to prevent text clipping */
 }
 
 /* Hover State - Brighter & "Active" feel */
@@ -246,8 +255,11 @@
 
   .menuBtn {
     height: 6rem;
-    font-size: 1rem;
-    letter-spacing: 3px;
+    font-size: 1.1rem;
+    /* Increased for tablet */
+    letter-spacing: 1.5px;
+    /* Reduced for better fit */
+    padding: 0.4rem 0.8rem;
   }
 }
 
@@ -261,24 +273,30 @@
     top: -100%;
     /* Hidden off-screen above */
     transform: none;
-    width: 80%;
-    /* Aumentado 10% (de 65%) */
-    max-width: 385px;
-    /* Aumentado 10% (de 350px) */
+    width: 85%;
+    /* Increased width for better button display */
+    max-width: 400px;
+    /* Increased max-width */
     margin: 0 auto;
-    height: 60%;
-    max-height: 96vh;
-    /* Aumentado 20% (de 80vh) */
+    height: auto;
+    /* Changed to auto to fit content */
+    min-height: 550px;
+    /* Minimum height to fit 4 buttons */
+    max-height: 85vh;
+    /* Reduced to prevent overflow on small screens */
     animation: none;
     transition: top 0.3s ease-in-out;
     z-index: 1000;
-    padding: 1.5rem 1rem;
+    padding: 1.2rem 1rem 1.5rem 1rem;
+    /* Optimized padding */
+    gap: 0.3rem;
+    /* Tighter gap between elements */
   }
 
   /* Show menu when open - más abajo */
   .staticBoard.mobileMenuOpen {
-    top: 140px;
-    /* Ajustado para header de 100px + margen */
+    top: 120px;
+    /* Slightly higher to maximize visible space */
   }
 
   /* Hide chains in mobile menu */
@@ -308,14 +326,36 @@
     /* Reduced chain height */
   }
 
+  .boardHeader {
+    margin-bottom: 0.3rem;
+    /* Reduced margin to save space */
+  }
+
   .logoImage {
-    max-width: 220px;
+    max-width: 200px;
+    /* Slightly smaller logo */
+    margin-top: 10px;
+    /* Reduced top margin */
+  }
+
+  .linksContainer {
+    gap: 0;
+    /* Remove gap between buttons */
+    margin-left: 20px;
+    /* Reduced left margin */
   }
 
   .menuBtn {
-    height: 5.5rem;
-    font-size: 0.95rem;
-    letter-spacing: 2px;
+    height: 5rem;
+    /* Reduced button height to fit all 4 */
+    font-size: 1rem;
+    /* Optimized for mobile readability */
+    letter-spacing: 1px;
+    /* Minimal spacing for better fit */
+    margin: -0.3rem 0;
+    /* Tighter negative margin for overlap */
+    padding: 0.3rem 0.6rem;
+    /* Adjusted padding for mobile */
   }
 }
 

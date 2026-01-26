@@ -61,18 +61,6 @@
   align-items: center;
 }
 
-/* Sello decorativo rojo de "Confidencial" */
-.stampConfidential {
-  border: 3px solid #d00;
-  color: #d00;
-  padding: 0.2rem 1rem;
-  font-weight: bold;
-  font-size: 1.2rem;
-  transform: rotate(-10deg);
-  opacity: 0.8;
-  mask-image: url("https://www.transparenttextures.com/patterns/grunge-wall.png");
-}
-
 /* Layout flex vertical para los campos del formulario */
 .form {
   display: flex;

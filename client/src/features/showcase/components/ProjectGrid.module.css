@@ -1,52 +1,56 @@
-/* Quest Board Container */
+/* Warcraft Quest Board Container */
 .inventoryContainer {
   width: 100%;
 }
 
-/* Quest Board Header */
+/* Enhanced Quest Board Header */
 .gridHeader {
-  color: #d4af37;
+  color: #ffd700;
   font-family: 'WarcraftFont', serif;
   text-align: center;
-  font-size: 3rem;
-  margin-bottom: 3rem;
+  font-size: 3.5rem;
+  margin-bottom: 3.5rem;
   text-transform: uppercase;
   text-shadow:
-    2px 2px 4px rgba(0, 0, 0, 0.8),
-    0 0 10px rgba(212, 175, 55, 0.3);
-  letter-spacing: 2px;
+    3px 3px 6px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(255, 215, 0, 0.5),
+    0 0 40px rgba(255, 215, 0, 0.3);
+  letter-spacing: 3px;
+  font-weight: bold;
 }
 
 /* Quest Cards Grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2.5rem;
   padding: 1rem;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .gridHeader {
-    font-size: 2.5rem;
-    margin-bottom: 2.5rem;
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
   }
 
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
   }
 }
 
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.75rem;
     padding: 0.5rem;
   }
 
   .gridHeader {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1.5px;
   }
 }

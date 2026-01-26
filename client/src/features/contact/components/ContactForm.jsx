@@ -97,7 +97,6 @@ const ContactForm = () => {
       ) : (
         <div className={styles.paperSheet}>
           <div className={styles.paperHeader}>
-             <span className={styles.stampConfidential}>CONFIDENTIAL</span>
           </div>
           
           <form onSubmit={handleSubmit} className={styles.form}>

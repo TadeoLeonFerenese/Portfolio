@@ -7,6 +7,11 @@
   box-shadow: 0 0 20px rgba(80, 80, 90, 0.08), inset 0 0 30px rgba(255, 255, 255, 0.02);
   display: flex;
   flex-direction: column;
+
+  /* Better text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .title {
@@ -57,14 +62,14 @@
   font-size: 1.15rem;
   color: #e0e0e0;
   font-weight: bold;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
 .institution {
   font-size: 0.95rem;
   color: #d4af37;
   font-style: italic;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
   display: block;
   margin-bottom: 0.75rem;
 }
@@ -77,7 +82,7 @@
   color: #e0e0e0;
   text-transform: uppercase;
   font-weight: bold;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
   letter-spacing: 0.5px;
   display: inline-block;
 }
@@ -86,7 +91,7 @@
   font-size: 0.8rem;
   color: #b0b0b0;
   font-style: italic;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
   margin-top: 0.75rem;
   line-height: 1.4;
 }
@@ -109,4 +114,27 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .degreeText {
+    font-size: 1.25rem;
+  }
+
+  .institution {
+    font-size: 1.05rem;
+  }
+
+  .status {
+    font-size: 0.9rem;
+  }
+
+  .details {
+    font-size: 0.9rem;
+  }
 }

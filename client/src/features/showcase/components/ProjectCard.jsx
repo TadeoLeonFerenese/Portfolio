@@ -2,8 +2,17 @@ import PropTypes from 'prop-types';
 import styles from './ProjectCard.module.css';
 
 const ProjectCard = ({ project }) => {
+  // Determine item quality tier based on project metadata
+  const getQualityClass = () => {
+    if (project.is_featured) return styles.legendary;
+    if (project.priority === 'high') return styles.epic;
+    return styles.rare;
+  };
+
+  const qualityClass = getQualityClass();
+
   return (
-    <article className={styles.questScroll}>
+    <article className={`${styles.questScroll} ${qualityClass}`}>
       {/* Quest Marker */}
       <div className={styles.questMarker}>!</div>
       
@@ -63,6 +72,7 @@ ProjectCard.propTypes = {
     description: PropTypes.string,
     image_url: PropTypes.string,
     is_featured: PropTypes.bool,
+    priority: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
     link_demo: PropTypes.string,
     link_repo: PropTypes.string

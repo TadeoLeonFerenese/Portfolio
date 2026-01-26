@@ -90,7 +90,7 @@ const CharacterSheet = () => {
       {/* Bottom row: Contact Info */}
       <div className={styles.contactBlock}>
         <a href={`mailto:${pii.email}`} className={styles.contactItem}>
-          ✉️ {pii.email}
+          ✉️ Email
         </a>
         <a
           href={pii.linkedin}
@@ -108,7 +108,14 @@ const CharacterSheet = () => {
         >
           💻 GitHub
         </a>
-        <div className={styles.contactItem}>📍 {pii.location}</div>
+        <a
+          href="https://www.google.com/maps/place/José+Mármol,+Buenos+Aires+Province,+Argentina/@-34.7833,-58.3667,14z"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.contactItem}
+        >
+          📍 {pii.location}
+        </a>
       </div>
     </div>
   );

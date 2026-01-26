@@ -5,6 +5,11 @@
   border-radius: 8px;
   margin-bottom: 0;
   box-shadow: 0 0 20px rgba(80, 80, 90, 0.08), inset 0 0 30px rgba(255, 255, 255, 0.02);
+
+  /* Better text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .categoryTitle {
@@ -16,7 +21,7 @@
   margin-top: 1.25rem;
   border-bottom: 1px solid #333;
   padding-bottom: 0.5rem;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
 .categoryTitle:first-of-type {
@@ -84,13 +89,17 @@
     font-size: 0.65rem;
     color: #e0e0e0;
     text-align: center;
-    font-family: "Roboto", "Helvetica Neue", sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-weight: 500;
     line-height: 1.2;
   }
 }
 
 @media (max-width: 768px) {
+  .categoryTitle {
+    font-size: 0.85rem;
+  }
+
   .talentNode {
     min-width: 70px;
   }
@@ -100,6 +109,6 @@
   }
 
   .skillName {
-    font-size: 0.6rem;
+    font-size: 0.75rem;
   }
 }

@@ -4,10 +4,10 @@ export const profileData = {
   pii: {
     name: "Tadeo Daniel Leon Ferense",
     shortName: "Tadeo Leon Ferense",
-    email: "leonferensetadeo@gmail.com",
+    email: "leonferenesetadeo@gmail.com",
     phone: "(+54) 11 3065 0188",
-    linkedin: "https://www.linkedin.com/in/tadeo-leon-ferense/",
-    github: "https://github.com/TadeoLeonFerese",
+    linkedin: "https://www.linkedin.com/in/tadeo-leon-ferenese",
+    github: "https://github.com/TadeoLeonFerenese",
     location: "Buenos Aires, Argentina",
   },
   hero: {
