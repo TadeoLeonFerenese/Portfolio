@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Models\Project;
 use Illuminate\Support\Collection;
 
+use Illuminate\Support\Facades\Cache;
+
 class ProjectService
 {
     /**
@@ -12,7 +14,11 @@ class ProjectService
      */
     public function getAll(): Collection
     {
-        return Project::orderBy('created_at', 'desc')->get();
+        return Cache::remember('projects_all', 60 * 60, function () {
+            return Project::with('techStack')
+                ->orderBy('created_at', 'desc')
+                ->get();
+        });
     }
 
     /**
@@ -20,8 +26,11 @@ class ProjectService
      */
     public function getFeatured(): Collection
     {
-        return Project::where('is_featured', true)
-            ->orderBy('created_at', 'desc')
-            ->get();
+        return Cache::remember('projects_featured', 60 * 60, function () {
+            return Project::with('techStack')
+                ->where('is_featured', true)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        });
     }
 }

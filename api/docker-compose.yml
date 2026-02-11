@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # 1. El Cerebro (Laravel API) 🧠
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio-api
+    container_name: portfolio-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - db
+      - redis
+    networks:
+      - portfolio-network
+    environment:
+      - DB_HOST=db
+      - REDIS_HOST=redis
+    env_file: .env
+
+  # 2. El Portero (Nginx Web Server) 🚪
+  web:
+    image: nginx:alpine
+    container_name: portfolio-web
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - portfolio-network
+
+  # 3. La Memoria (Base de Datos MySQL) 🗄️
+  db:
+    image: mysql:8.0
+    container_name: portfolio-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3307:3306" # Usamos 3307 para evitar conflicto con tu MySQL local
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - portfolio-network
+
+  # 4. El Mensajero (Redis - Cache & Queue) ⚡
+  redis:
+    image: redis:alpine
+    container_name: portfolio-redis
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+networks:
+  portfolio-network:
+    driver: bridge
+
+volumes:
+  db-data:

@@ -1,67 +1,87 @@
-/* Warcraft Projects Layout - Enhanced WoW Theme */
-
+/* InventoryLayout.module.css - Sober Gamer Aesthetic */
 .dungeonContainer {
   min-height: 100vh;
+  width: 100%;
   position: relative;
-  background-image: url("../../../assets/warcraft_projects_bg.png");
+  background-color: #0d0d0d;
+  /* Fondo Mapa sobrio */
+  background-image: url("../../../assets/mapaBG.png");
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
   background-attachment: fixed;
-  padding: 4rem 2rem;
+  background-position: center;
 
-  /* Better text rendering for crisp, clear text */
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  color: #f0e6d2;
+  /* Color pergamino claro */
+  font-family: 'Manrope', sans-serif;
+
+  /* Better text rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+
+  /* Cursor personalizado */
+  cursor: url("../../../assets/cursores/gam376.cur"), auto;
+
+  /* FIX: Espacio para el menú flotante izquierdo */
+  /* Sidebar Width (350px) + Gap */
+  padding-left: 420px;
+  box-sizing: border-box;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
 }
 
-/* Enhanced mystical fog overlay with deeper blue tones */
+/* Oscurecimiento sutil para legibilidad sobre el mapa */
 .fog {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(ellipse at center,
-      rgba(10, 20, 40, 0.2) 0%,
-      rgba(10, 20, 40, 0.6) 100%);
+  background: rgba(10, 10, 10, 0.6);
+  /* Capa oscura sobria */
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 
-/* Content frame for project cards */
 .contentFrame {
   position: relative;
-  z-index: 2;
-  max-width: 1400px;
+  z-index: 1;
+  width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
 
 /* Tablet (768px - 1024px) */
+/* El menú sigue visible pero más angosto */
 @media (max-width: 1024px) {
   .dungeonContainer {
-    padding: 3rem 1.5rem;
+    padding-left: 360px;
+    padding-right: 1.5rem;
   }
 }
 
 /* Mobile (< 768px) */
+/* El menú desaparece (overlay) */
 @media (max-width: 768px) {
   .dungeonContainer {
-    padding: 2rem 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     padding-top: 120px;
-    /* Space for fixed header (100px) + margin */
-    background-attachment: scroll;
-    /* Performance improvement for mobile */
-    background-size: cover;
-    background-position: center center;
+    /* Espacio para Header */
   }
 
   .fog {
-    background: radial-gradient(ellipse at center,
-        rgba(10, 20, 40, 0.3) 0%,
-        rgba(10, 20, 40, 0.7) 100%);
-    /* Darker for better contrast on mobile */
+    background: rgba(10, 10, 10, 0.7);
+    /* Más oscuro en móvil para leer mejor */
   }
 }

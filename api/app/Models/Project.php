@@ -16,6 +16,7 @@ class Project extends Model
         'link_repo',
         'link_demo',
         'is_featured',
+        'type', // 'main' or 'inventory'
         'tags',
     ];
 
@@ -23,4 +24,9 @@ class Project extends Model
         'is_featured' => 'boolean',
         'tags' => 'array',
     ];
+
+    public function techStack(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(TechStack::class);
+    }
 }

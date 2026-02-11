@@ -9,16 +9,16 @@ Creamos `/app/Http/Controllers/Api/V1`.
 ## 2. Services Layer (`/Services`)
 - **Problema**: Poner lógica de negocio en el Controller (ej: "Crear factura y enviar email").
 - **Solución**: El Controller solo valida input y llama al Service.
-  - `ProjectController` -> `ProjectService->createProject(...)`
+  - `ProjectController` -> `ProjectService->getAllProjects(...)`
   - Esto facilita testear la lógica sin simular peticiones HTTP.
 
-## 3. Enums (`/Enums`)
-- **Uso**: Tipado fuerte para estados. Ej: `ProjectStatus::PUBLISHED`.
-- Evita "magic strings" como `'published'` dispersos por el código.
+## 3. FormRequests & Resources (`/Requests` & `/Resources`)
+- **Validate First (`FormRequest`)**: `StoreContactRequest` valida los datos antes de que lleguen al controlador.
+- **Transform Output (`JsonResource`)**: `ProjectResource` transforma los modelos en JSON limpio, ocultando campos sensibles o formateando fechas.
 
 ## Próximos Pasos
-- Configurar `routes/api.php` para apuntar a los nuevos controladores V1.
-- Crear nuestro primer modelo `Project` (para el Portfolio).
+- Migrar lógica restante a Services si es necesario.
+- Implementar más FormRequests para validaciones complejas.
 
 ## Verificación
 - **Endpoint**: [http://api.test/api/v1/projects](http://api.test/api/v1/projects)

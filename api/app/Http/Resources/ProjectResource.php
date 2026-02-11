@@ -13,13 +13,18 @@ class ProjectResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'cover_image' => $this->image_url, // API response mapping example
+            'type' => $this->type,
+            'cover_image' => $this->image_url,
             'links' => [
                 'repo' => $this->link_repo,
                 'demo' => $this->link_demo,
             ],
             'is_featured' => $this->is_featured,
-            'tags' => $this->tags,
+            'tech_stack' => $this->techStack->map(fn($t) => [
+                'name' => $t->name,
+                'icon' => $t->icon_url,
+            ]),
+            'tags' => $this->tags, // @deprecated: Use tech_stack
             'created_at' => $this->created_at->format('Y-m-d'),
         ];
     }

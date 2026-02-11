@@ -8,7 +8,7 @@ use App\Http\Controllers\Api\V1\ContactController;
 
 Route::prefix('v1')->group(function () {
     Route::get('/projects', [ProjectController::class, 'index']);
-    Route::post('/contact', [ContactController::class, 'store']);
+    Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:3,1');
     Route::get('/dashboard/stats', [App\Http\Controllers\Api\V1\DashboardController::class, 'stats']);
 });
 

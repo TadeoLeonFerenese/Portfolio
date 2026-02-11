@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Project;
+use App\Models\TechStack;
 
 class ProjectSeeder extends Seeder
 {
@@ -17,6 +18,7 @@ class ProjectSeeder extends Seeder
                 'link_repo' => '', // Confidential
                 'link_demo' => '',
                 'is_featured' => true,
+                'type' => 'main',
                 'tags' => ['Docker', 'Linux', 'Legacy Systems', 'Monitoring'],
             ],
             [
@@ -26,6 +28,7 @@ class ProjectSeeder extends Seeder
                 'link_repo' => 'https://github.com/tadeoleon/portfolio',
                 'link_demo' => 'https://tadeoleon.dev',
                 'is_featured' => true,
+                'type' => 'main',
                 'tags' => ['Laravel', 'React', 'Vite', 'Clean Architecture'],
             ],
             [
@@ -35,12 +38,17 @@ class ProjectSeeder extends Seeder
                 'link_repo' => 'https://github.com/tadeoleon/ecomm-demo',
                 'link_demo' => '',
                 'is_featured' => false,
+                'type' => 'inventory',
                 'tags' => ['Microservices', 'Event Sourcing', 'Kafka', 'Go'],
             ]
         ];
 
-        foreach ($projects as $project) {
-            Project::create($project);
+        foreach ($projects as $projectData) {
+            $project = Project::create($projectData);
+            
+            // Attach TechStacks based on tags
+            $stacks = TechStack::whereIn('name', $projectData['tags'])->get();
+            $project->techStack()->attach($stacks);
         }
     }
 }
