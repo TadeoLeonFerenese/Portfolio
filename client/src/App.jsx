@@ -30,9 +30,6 @@ const DashboardPage = () => {
 const ProjectsPage = () => {
     const { projects, loading, error } = useProjects();
     
-    // Simple loading states inside the theme
-    if (loading) return <div style={{color: '#fff'}}>Loading Artifacts...</div>;
-    
     return (
       <InventoryLayout>
            <ProjectGrid projects={projects} />

@@ -5,7 +5,7 @@
   position: relative;
   background-color: #0d0d0d;
   /* Fondo Mapa sobrio */
-  background-image: url("../../../assets/mapaBG.png");
+  background-image: url("../../../assets/mapBG.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

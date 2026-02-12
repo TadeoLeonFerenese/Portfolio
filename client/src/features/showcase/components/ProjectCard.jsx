@@ -12,53 +12,47 @@ const ProjectCard = ({ project }) => {
   const qualityClass = getQualityClass();
 
   return (
-    <article className={`${styles.questScroll} ${qualityClass}`}>
-      {/* Quest Marker */}
-      <div className={styles.questMarker}>!</div>
-      
-      {/* Legendary Badge */}
+    <article className={styles.projectCard}>
+      {/* Featured Badge */}
       {project.is_featured && (
-        <div className={styles.legendaryBadge}>Legendary</div>
+        <div className={styles.featuredBadge}>Featured</div>
       )}
 
-      {/* Quest Title */}
-      <h3 className={styles.questTitle}>{project.title}</h3>
+      {/* Project Title */}
+      <h3 className={styles.projectTitle}>{project.title}</h3>
 
-      {/* Quest Image/Preview */}
+      {/* Project Image */}
       {project.image_url && (
-        <div className={styles.questImage}>
+        <div className={styles.projectImage}>
           <img src={project.image_url} alt={project.title} />
         </div>
       )}
 
-      {/* Objectives Section */}
-      <div className={styles.objectives}>
-        <h4 className={styles.objectivesHeader}>Objectives:</h4>
-        <p className={styles.questDescription}>{project.description}</p>
-      </div>
+      {/* Description */}
+      <p className={styles.projectDescription}>{project.description}</p>
 
       {/* Technology Tags */}
       {project.tags && project.tags.length > 0 && (
-        <div className={styles.skills}>
-          <span className={styles.skillsLabel}>Required Skills:</span>
+        <div className={styles.tagsSection}>
+          <span className={styles.tagsLabel}>Tech Stack</span>
           <div className={styles.tagsList}>
             {project.tags.map(tag => (
-              <span key={tag} className={styles.skillTag}>{tag}</span>
+              <span key={tag} className={styles.tag}>{tag}</span>
             ))}
           </div>
         </div>
       )}
 
-      {/* Quest Actions */}
-      <div className={styles.questActions}>
+      {/* Actions */}
+      <div className={styles.projectActions}>
         {project.link_demo && (
-          <a href={project.link_demo} target="_blank" rel="noopener noreferrer" className={styles.questButton}>
-            Accept Quest
+          <a href={project.link_demo} target="_blank" rel="noopener noreferrer" className={styles.actionButton}>
+            Live Demo
           </a>
         )}
         {project.link_repo && (
-          <a href={project.link_repo} target="_blank" rel="noopener noreferrer" className={styles.questButton}>
-            View Details
+          <a href={project.link_repo} target="_blank" rel="noopener noreferrer" className={styles.actionButton}>
+            View Code
           </a>
         )}
       </div>

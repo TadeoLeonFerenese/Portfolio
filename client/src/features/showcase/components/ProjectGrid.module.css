@@ -19,10 +19,20 @@
   font-weight: bold;
 }
 
-/* Quest Cards Grid */
+/* Empty State Message */
+.emptyState {
+  text-align: center;
+  color: #888;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.5rem;
+  margin-top: 4rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Quest Cards Grid - Fixed 2 columns */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
   padding: 1rem;
 }
@@ -36,7 +46,7 @@
   }
 
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
 }

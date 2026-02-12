@@ -1,6 +1,21 @@
 version: '3.8'
 
 services:
+  # 0. La Cara (React Frontend) 🎨
+  client:
+    build:
+      context: ../client
+      dockerfile: Dockerfile
+    image: portfolio-client
+    container_name: portfolio-client
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - app
+    networks:
+      - portfolio-network
+
   # 1. El Cerebro (Laravel API) 🧠
   app:
     build:
