@@ -44,9 +44,22 @@
   pointer-events: none;
 }
 
+/* Efecto de lluvia — mismo que Dashboard */
+.rainVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
 .contentFrame {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   max-width: 1600px;
   /* Aumentado para aprovechar el espacio restante */
@@ -64,6 +77,36 @@
   flex-direction: column;
   gap: 2rem;
   align-items: stretch;
+}
+
+/* ===== ANIMACIÓN DE ENTRADA ===== */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cada hijo directo del grid entra escalonado */
+.characterSheetGrid>* {
+  animation: fadeSlideIn 0.55s ease both;
+}
+
+.characterSheetGrid>*:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.characterSheetGrid>*:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.characterSheetGrid>*:nth-child(3) {
+  animation-delay: 0.35s;
 }
 
 /* --- RESPONSIVE ADJUSTMENTS --- */

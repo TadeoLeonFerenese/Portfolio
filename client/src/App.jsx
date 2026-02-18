@@ -9,6 +9,7 @@ import Hero from '@features/home/components/Hero'; // Re-using Hero profile as c
 
 import InventoryLayout from '@features/showcase/layouts/InventoryLayout';
 import ProjectGrid from '@features/showcase/components/ProjectGrid';
+import LoadingSpinner from '@features/showcase/components/LoadingSpinner';
 import { useProjects } from '@features/showcase/hooks/useProjects';
 
 import ContactLayout from '@features/contact/layouts/ContactLayout';
@@ -32,7 +33,11 @@ const ProjectsPage = () => {
     
     return (
       <InventoryLayout>
-           <ProjectGrid projects={projects} />
+           {loading ? (
+             <LoadingSpinner />
+           ) : (
+             <ProjectGrid projects={projects} error={error} />
+           )}
       </InventoryLayout>
     );
 };

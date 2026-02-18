@@ -2,12 +2,16 @@ import PropTypes from 'prop-types';
 import ProjectCard from './ProjectCard';
 import styles from './ProjectGrid.module.css';
 
-const ProjectGrid = ({ projects }) => {
+const ProjectGrid = ({ projects, error }) => {
   return (
     <div className={styles.inventoryContainer}>
       <div className={styles.gridHeader}>Legendary Artifacts</div>
       
-      {projects.length === 0 ? (
+      {error ? (
+        <div className={styles.emptyState}>
+            <p>Failed to load artifacts. Please refresh the page.</p>
+        </div>
+      ) : projects.length === 0 ? (
         <div className={styles.emptyState}>
             <p>The vault is empty. No artifacts discovered yet.</p>
         </div>
@@ -23,7 +27,8 @@ const ProjectGrid = ({ projects }) => {
 };
 
 ProjectGrid.propTypes = {
-  projects: PropTypes.array.isRequired
+  projects: PropTypes.array.isRequired,
+  error: PropTypes.object
 };
 
 export default ProjectGrid;

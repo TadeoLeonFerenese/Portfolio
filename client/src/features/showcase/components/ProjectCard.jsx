@@ -22,9 +22,9 @@ const ProjectCard = ({ project }) => {
       <h3 className={styles.projectTitle}>{project.title}</h3>
 
       {/* Project Image */}
-      {project.image_url && (
+      {project.cover_image && (
         <div className={styles.projectImage}>
-          <img src={project.image_url} alt={project.title} />
+          <img src={project.cover_image} alt={project.title} />
         </div>
       )}
 
@@ -45,13 +45,13 @@ const ProjectCard = ({ project }) => {
 
       {/* Actions */}
       <div className={styles.projectActions}>
-        {project.link_demo && (
-          <a href={project.link_demo} target="_blank" rel="noopener noreferrer" className={styles.actionButton}>
+        {project.links?.demo && (
+          <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className={styles.actionButton}>
             Live Demo
           </a>
         )}
-        {project.link_repo && (
-          <a href={project.link_repo} target="_blank" rel="noopener noreferrer" className={styles.actionButton}>
+        {project.links?.repo && (
+          <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className={styles.actionButton}>
             View Code
           </a>
         )}
@@ -64,12 +64,14 @@ ProjectCard.propTypes = {
   project: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
-    image_url: PropTypes.string,
+    cover_image: PropTypes.string,
     is_featured: PropTypes.bool,
     priority: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
-    link_demo: PropTypes.string,
-    link_repo: PropTypes.string
+    links: PropTypes.shape({
+      demo: PropTypes.string,
+      repo: PropTypes.string,
+    }),
   }).isRequired
 };
 
